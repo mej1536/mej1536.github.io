@@ -12,21 +12,20 @@
 'use strict';
 var gulp  = require('gulp'),
     watch = require('gulp-watch'),
-    merge = require('merge-stream'),
     plumber = require('gulp-plumber'),
-    upmodul = require('gulp-update-modul'),
+    merge = require('merge-stream'),
     cssSass = require('gulp-sass'),
-   // cssLess = require('gulp-less'),
+    autoprefixer = require('gulp-autoprefixer'),
     cleanCSS = require('gulp-clean-css'),
     csscomb = require('gulp-csscomb'),
-    autoprefixer = require('gulp-autoprefixer'),
     changed = require('gulp-changed'),
     replace = require('gulp-replace'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
     htmlhint = require('gulp-htmlhint'),
+    htmlhintReporter = require('gulp-htmlhint-html-reporter'),
     jshintXMLReporter = require('gulp-jshint-xml-file-reporter'),
-    htmlhintReporter = require('gulp-htmlhint-html-reporter')
+    upmodul = require('gulp-update-modul')
 ;
 
 
@@ -34,8 +33,8 @@ var gulp  = require('gulp'),
  * CSS: Sass
  * -----------------------------------------
  */
-var _sassSRC = './_workingStage/common/sass/**/*.scss';
-var _sassDEST = './public/common/css/';
+var _sassSRC = './_workingStage/public/sass/**/*.scss';
+var _sassDEST = './public/css/';
 var cleanOptions = {keepBreaks:true, keepSpecialComments:'*', restructuring:false, shorthandCompacting:false, compatibility:'ie7,ie8', mediaMerging:true, roundingPrecision:-1, debug:true};
 
 gulp.task('styleSASS',function(){
@@ -59,8 +58,8 @@ gulp.task('styleSASS',function(){
  * JS: concat,jshint
  * -----------------------------------------
  */
-var _jsSRC  = './_workingStage/common/js/*.js';
-var _jsDEST = './public/common/js/';
+var _jsSRC  = './_workingStage/public/js/*.js';
+var _jsDEST = './public/js/';
 
 //분리된 파일 전체를 1개 파일로
 gulp.task('jsConcat',function(){
@@ -81,11 +80,11 @@ gulp.task('jsConcat',function(){
 
 //파일명 여러개로
 gulp.task('jScript',function(){
-	var streamJsSRC1 = gulp.src(['./_workingStage/common/js/file1.js', './_workingStage/common/js/file2.js'])
+	var streamJsSRC1 = gulp.src(['./_workingStage/public/js/file1.js', './_workingStage/public/js/file2.js'])
 		.pipe(concat('common.js'))
 		.pipe(gulp.dest(_jsDEST));
 	
-	var streamJsSRC2 = gulp.src(['./_workingStage/common/js/file3.js', './_workingStage/common/js/file4.js'])
+	var streamJsSRC2 = gulp.src(['./_workingStage/public/js/file3.js', './_workingStage/public/js/file4.js'])
 		.pipe(concat('module.js'))
 		.pipe(gulp.dest(_jsDEST));
 	
@@ -108,27 +107,76 @@ gulp.task('htmlHint',function(){
 
 
 /** ----------------------------------------
+ * Copy, Clean
+ * -----------------------------------------
+ */
+var del = require('del');
+var paths = {
+		scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
+		images: 'client/img/**/*'
+};
+gulp.task('copyLib',function(){
+	
+});
+//gulp.task('copyLib', ['css', 'js', 'imgs']);
+
+
+gulp.task('clean', function() {
+	  // You can use multiple globbing patterns as you would with `gulp.src`
+	  return del(['build']);
+	});
+
+	gulp.task('scripts', ['clean'], function() {
+	  // Minify and copy all JavaScript (except vendor scripts)
+	  // with sourcemaps all the way down
+	  return gulp.src(paths.scripts)
+	    .pipe(sourcemaps.init())
+	      .pipe(coffee())
+	      .pipe(uglify())
+	      .pipe(concat('all.min.js'))
+	    .pipe(sourcemaps.write())
+	    .pipe(gulp.dest('build/js'));
+	});
+
+	// Copy all static images
+	gulp.task('images', ['clean'], function() {
+	  return gulp.src(paths.images)
+	    // Pass in options to the task
+	    .pipe(imagemin({optimizationLevel: 5}))
+	    .pipe(gulp.dest('build/img'));
+	});
+
+	// Rerun the task when a file changes
+	gulp.task('watch', function() {
+	  gulp.watch(paths.scripts, ['scripts']);
+	  gulp.watch(paths.images, ['images']);
+	});
+
+
+/** ----------------------------------------
  * Watch
  * -----------------------------------------
  */
 gulp.slurped = false;
 gulp.task('watch', function(){
-	gulp.watch(['./_workingStage/common/sass/**/*.scss'],['styleSASS']);
-	gulp.watch(['./_workingStage/common/js/*.js'],['jsConcat','jScript']);
+	gulp.watch(['./_workingStage/public/sass/**/*.scss'],['styleSASS']);
+	gulp.watch(['./_workingStage/public/js/*.js'],['jsConcat','jScript']);
 	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
 	
 	//gulpfile.js changed
 	if(!gulp.slurped){
 		gulp.watch("gulpfile.js", ["default"]);
-		gulp.watch(['./_workingStage/common/sass/**/*.scss'],['styleSASS']);
-		gulp.watch(['./_workingStage/common/js/*.js'],['jsConcat','jScript']);
+		gulp.watch(['./_workingStage/public/sass/**/*.scss'],['styleSASS']);
+		gulp.watch(['./_workingStage/public/js/*.js'],['jsConcat','jScript']);
 		gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
 		gulp.slurped = true;
 	}
 });
 
 gulp.task('default', ['watch'], function(){
+	//
 });
+
 
 
 /** ----------------------------------------
