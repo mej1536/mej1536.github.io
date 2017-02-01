@@ -100,13 +100,13 @@ gulp.task('htmlHint',function(){
  * Copy, Clean
  * ----------------------------------------- */
 var _copySRC = {
-		scripts:['./_workingStage/js/lib/*.js']
-		,css   :['./_workingStage/css/*.css']
+		scripts:['./_workingStage/js/lib/*.js'],
+		css   :['./_workingStage/css/*.css']
 		//,images :['./public/img/**/*']
 };
 
 gulp.task('copyLib', function() {
-	gulp.src(_copySRC.css)
+	gulp.src(_copySRC.css,_copySRC.scripts)
 		.pipe(copy())
 		.pipe(gulp.dest('./public/'));
 });
@@ -171,3 +171,4 @@ gulp.task('default', ['watch'], function(){
 	//
 });
 
+//gulp.task('cleanUp', ['watch'], function(){ });
