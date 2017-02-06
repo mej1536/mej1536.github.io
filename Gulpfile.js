@@ -23,7 +23,10 @@ var gulp  = require('gulp'),
 	jshint = require('gulp-jshint'),
 	htmlhint = require('gulp-htmlhint'),
 	jshintXMLReporter = require('gulp-jshint-xml-file-reporter'),
-	htmlhintReporter = require('gulp-htmlhint-html-reporter')
+	htmlhintReporter = require('gulp-htmlhint-html-reporter'),
+	del = require('del'),
+	runSequence = require('run-sequence'),
+	gcallback = require('gulp-callback')
 ;
 
 /* -----------------------------------------
@@ -45,7 +48,10 @@ gulp.task('styleSASS',function(){
 		.pipe(cssComb( 'csscomb.json' ))
 		.pipe(replace('/*! -----' , '\n/*! -----'))
 		.pipe(replace('/*!' , '/*'))
-		.pipe(gulp.dest(_sassDEST));
+		.pipe(gulp.dest(_sassDEST))
+		.pipe(gcallback(function() {
+		    console.log(' css done ');
+		}));
 });
 
 /* -----------------------------------------
@@ -68,7 +74,10 @@ gulp.task('jsConcat',function(){
 		.pipe(jshint.reporter(jshintXMLReporter))
 		.on('end', jshintXMLReporter.writeFile({ format: 'checkstyle', filePath: './jshint.xml', alwaysReport: 'true' }))
 		.pipe(concat('public.js'))
-		.pipe(gulp.dest(_jsDEST));
+		.pipe(gulp.dest(_jsDEST))
+		.pipe(gcallback(function() {
+		    console.log(' here ');
+		}));
 });
 
 //파일명 여러개로
@@ -97,35 +106,17 @@ gulp.task('htmlHint',function(){
 });
 
 /* -----------------------------------------
- * Copy, Clean
+ * Copy
  * ----------------------------------------- */
 var _copySRC = {
-		scripts:['./_workingStage/js/lib/*.js'],
-		css   :['./_workingStage/css/*.css']
-		//,images :['./public/img/**/*']
+		script :['./_workingStage/js/lib/*.js'],
+		css:['./_workingStage/css/*.css']
 };
-
 gulp.task('copyLib', function() {
-	gulp.src(_copySRC.css,_copySRC.scripts)
+	gulp.src(_copySRC.css,_copySRC.script)
 		.pipe(copy())
 		.pipe(gulp.dest('./public/'));
 });
-
-/*
-var otherGulpFunction = require('gulp-other-function');
-var sourceFiles = [ 'source1/*', 'source2/*.txt' ];
-var destination = 'dest/';
-
-return gulp.src(sourceFiles)
-	.pipe(gulpCopy(outputPath, options))
-	.pipe(otherGulpFunction())
-	.dest(destination);
-
-// Rerun the task when a file changes
-gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
-});*/
 
 /* -----------------------------------------
  * Gulp Update
@@ -167,8 +158,18 @@ gulp.task('watch', function(){
 	}
 });
 
-gulp.task('default', ['watch'], function(){
+gulp.task('build-clean', function() {
+	// Return the Promise from del()
+	return del(['./public/js/*.js', './public/css/*.css','!public/assets/goat.png']).then(paths =>{ console.log('Deleted files and folders:\n',paths.join('\n')); });
+	// 'return' is the key here, to make sure asynchronous tasks are done!
+});
+gulp.task('build', function(callback) {
+	runSequence('build-clean',
+				['styleSASS', 'jsConcat','jScript'],
+				'htmlHint','copyLib',
+				callback);
+	});
+gulp.task('default', ['watch','styleSASS','jsConcat','jScript'], function(){
 	//
 });
 
-//gulp.task('cleanUp', ['watch'], function(){ });
