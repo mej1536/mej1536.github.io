@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+
+/*! ------------------------------ 
+ * Description:
+ * ------------------------------ */
+/*! 재설정 */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
+body{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;font-size:12px;color:#666666;background:#ffffff;}
+table{table-layout:fixed;border-spacing:0;border-collapse:collapse;}
+hr{display:none;}
+em,i{font-style:normal;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:after,blockquote:before,q:after,q:before{content:'';content:none;}
+abbr[title]{border-bottom:1px dotted;}
+mark{color:#000000;background:#ffff00;}
+sub,sup{position:relative;line-height:0;vertical-align:baseline;}
+sup{top:-.5em;}
+sub{bottom:-.25em;}
+svg:not(:root){overflow:hidden;}
+pre,textarea{overflow:auto;}
+.clearfix:after,.clearfix:before{display:table;line-height:0;content:'';}
+.clearfix:after{clear:both;}
+
+/*! ----- 공통사용 ----- */
+/*! Skip Navigation */
+#skipNavi{position:absolute;z-index:10000;width:100%;text-align:center;}
+#skipNavi a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
+#skipNavi a:active,#skipNavi a:focus{width:auto;height:auto;padding:5px;background:#0075b1;}
+#skipNaviReturn{position:relative;}
+#skipNaviReturn a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
+#skipNaviReturn a:active,#skipNaviReturn a:focus{width:auto;height:auto;margin-bottom:10px;padding:5px;background:#0075b1;}
+/*! 버튼 */
+.btn{display:inline-block;}
+a.abc{color:#656565;background:#f6f6f6;}
+/*! tables */
+table{width:100%;}
