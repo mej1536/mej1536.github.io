@@ -4,8 +4,10 @@
  * ------------------------------ */
 //reset
 @import 'fragment_Base/reset';
-@import 'fragment_Base/reset';
+@import 'fragment_Base/normalize';
 
 
 /*! ----- 공통사용 ----- */
-@import 'utilities';
+@import 'fragment_UI/skip';
+@import 'fragment_UI/btns';
+@import 'fragment_UI/table';
