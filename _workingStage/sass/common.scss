@@ -6,8 +6,13 @@
 @import 'fragment_Base/reset';
 @import 'fragment_Base/normalize';
 
+/*
+ 그밖에 세분화 파일명(고려사항)
+ 
+ print main template module object
+ */
 
 /*! ----- 공통사용 ----- */
-@import 'fragment_UI/skip';
+@import 'fragment_Base/skip';
 @import 'fragment_UI/btns';
 @import 'fragment_UI/table';
