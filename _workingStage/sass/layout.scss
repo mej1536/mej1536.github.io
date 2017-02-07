@@ -2,9 +2,11 @@
 /*! ------------------------------ 
  * Description:
  * ------------------------------ */
- 
-//레이아웃
-@import 'gridSystem';
+@import '_variables/variables';
+@import '_mixins/mixins';
+
+/*! layout */
+#wrapper {width:$widthMax;}
 
 /*! 테스트 -- */
 div {background:blue;
