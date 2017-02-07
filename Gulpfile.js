@@ -34,11 +34,8 @@ var gulp  = require('gulp'),
  * ----------------------------------------- */
 var _sassSRC  = './_workingStage/sass/**/*.scss';
 var _sassDEST = './public/css/';
-var cleanOptions = new cleanCSS( 
-		{format: 'keep-breaks'},{compatibility: 'ie7'},
-		{level: { 1:{all:false}, 2:{all:false} }
-	}
-);
+var cleanOptions = new cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} });
+
 gulp.task('styleSASS',function(){
 	return gulp.src(_sassSRC)
 		.pipe(plumber())
@@ -52,16 +49,14 @@ gulp.task('styleSASS',function(){
 		.pipe(replace('/*! -----' , '\n/*! -----'))
 		//.pipe(replace('/*!' , '/*'))
 		.pipe(gulp.dest(_sassDEST))
-		.pipe(gcallback(function() {
-		    console.log(' css done ');
-		}));
+		.pipe(gcallback(function(){
+				console.log('** task done : styleSASS');
+			})
+		);
 });
 
-
-
-
 /* -----------------------------------------
- * JS: concat,jshint
+ * JS: jshint, concat
  * ----------------------------------------- */
 var _jsSRC  = './_workingStage/js/*.js';
 var _jsDEST = './public/js/';
@@ -81,9 +76,10 @@ gulp.task('jsConcat',function(){
 		.on('end', jshintXMLReporter.writeFile({ format: 'checkstyle', filePath: './jshint.xml', alwaysReport: 'true' }))
 		.pipe(concat('public.js'))
 		.pipe(gulp.dest(_jsDEST))
-		.pipe(gcallback(function() {
-		    console.log(' here ');
-		}));
+		.pipe(gcallback(function(){
+			console.log('** task done : jsConcat');
+		})
+	);
 });
 
 //파일명 여러개로
@@ -114,15 +110,23 @@ gulp.task('htmlHint',function(){
 /* -----------------------------------------
  * Copy
  * ----------------------------------------- */
-var _copySRC = {
-		script :['./_workingStage/js/lib/*.js'],
-		css:['./_workingStage/css/*.css']
-};
-gulp.task('copyLib', function() {
-	gulp.src(_copySRC.css,_copySRC.script)
+gulp.task('copyJS', function() {
+	return gulp.src(['./_workingStage/js/lib/*.js'])
 		.pipe(copy())
-		.pipe(gulp.dest('./public/'));
+		.pipe(gulp.dest('./public/js/lib/'));
 });
+gulp.task('copyCSS', function() {
+	return gulp.src(['./_workingStage/css/**/*.css'])
+		.pipe(copy())
+		.pipe(gulp.dest('./public/css/'));
+});
+
+//
+//gulp.task('copy2', function () {
+//	return gulp.src(['some/other/folders/src/public/**/*', 'some/other/folders/src/vendor/**/*'],{base: 'other'})
+//		.pipe(gulp.dest('build'));
+//});
+
 
 /* -----------------------------------------
  * Gulp Update
@@ -170,11 +174,8 @@ gulp.task('build-clean', function() {
 	// 'return' is the key here, to make sure asynchronous tasks are done!
 });
 gulp.task('build', function(callback) {
-	runSequence('build-clean',
-				['styleSASS', 'jsConcat','jScript'],
-				'htmlHint','copyLib',
-				callback);
-	});
+	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint','copyJS','copyCSS', callback);
+});
 gulp.task('default', ['watch','copyLib','styleSASS','jsConcat','jScript'], function(){
 	//
 });
