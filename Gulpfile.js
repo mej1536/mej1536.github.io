@@ -3,7 +3,7 @@
  * 작업폴더  : ./_workingStage
  * 최종산출물: ./public
  * ------------------------------------------------
- * 최종수정일: 2017.02.02
+ * 최종수정일: 2017.02.07
  * ------------------------------------------------ */
 
 'use strict';
@@ -34,8 +34,11 @@ var gulp  = require('gulp'),
  * ----------------------------------------- */
 var _sassSRC  = './_workingStage/sass/**/*.scss';
 var _sassDEST = './public/css/';
-var cleanOptions = {keepBreaks:true, keepSpecialComments:'*', restructuring:false, shorthandCompacting:false, compatibility:'ie7,ie8', mediaMerging:true, roundingPrecision:-1, debug:true};
-
+var cleanOptions = new cleanCSS( 
+		{format: 'keep-breaks'},{compatibility: 'ie7'},
+		{level: { 1:{all:false}, 2:{all:false} }
+	}
+);
 gulp.task('styleSASS',function(){
 	return gulp.src(_sassSRC)
 		.pipe(plumber())
@@ -44,15 +47,18 @@ gulp.task('styleSASS',function(){
 			browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
 			cascade: false
 		}))
-		.pipe(cleanCSS( cleanOptions ))
+		.pipe(cleanOptions)
 		.pipe(cssComb( 'csscomb.json' ))
 		.pipe(replace('/*! -----' , '\n/*! -----'))
-		.pipe(replace('/*!' , '/*'))
+		//.pipe(replace('/*!' , '/*'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function() {
 		    console.log(' css done ');
 		}));
 });
+
+
+
 
 /* -----------------------------------------
  * JS: concat,jshint
@@ -169,7 +175,7 @@ gulp.task('build', function(callback) {
 				'htmlHint','copyLib',
 				callback);
 	});
-gulp.task('default', ['watch','styleSASS','jsConcat','jScript'], function(){
+gulp.task('default', ['watch','copyLib','styleSASS','jsConcat','jScript'], function(){
 	//
 });
 

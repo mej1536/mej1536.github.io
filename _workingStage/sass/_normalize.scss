@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@import '_variables/variables';
+@import '_mixins/mixins';
+
+/*! 재설정 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,
+em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {@include defaultSetZero;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} /* HTML5 display-role reset for older browsers */
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+
+body {background:#fff;font-size:12px; color:#666;@include defaultSetFont;}
+table{table-layout:fixed; @include tableSpacing;}
+h1,h2,h3,h4,h5,h6 {}
+hr{display:none;}
+em,i {font-style:normal;}
+ol,ul{list-style:none;}
+
+blockquote,q{quotes:none;}
+blockquote:after,blockquote:before,q:after,q:before{content:'';content:none;}
+abbr[title]{border-bottom:1px dotted;}
+mark{background:#ff0;color:#000}
+sub,sup{position:relative;vertical-align:baseline;line-height:0}
+sup{top:-.5em}
+sub{bottom:-.25em}
+svg:not(:root){overflow:hidden}
+pre,textarea{overflow:auto}
+
+
+
+
+//
+.clearfix {@include clearfix}
