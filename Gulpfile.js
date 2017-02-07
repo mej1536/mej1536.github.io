@@ -85,10 +85,26 @@ gulp.task('jsConcat',function(){
 //파일명 여러개로
 gulp.task('jScript',function(){
 	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js'])
+		.pipe(jshint({
+		//	undef:true, 
+		//	unused:true,
+			globals: { jQuery: true, console: true, module: true, document: true },
+			curly: true,
+			eqeqeq: true,
+			eqnull: true,
+			browser: true }))
 		.pipe(concat('common.js'))
 		.pipe(gulp.dest(_jsDEST));
 	
 	var streamJsSRC2 = gulp.src(['./_workingStage/js/file3.js', './_workingStage/js/file4.js'])
+		.pipe(jshint({
+		//	undef:true, 
+		//	unused:true,
+			globals: { jQuery: true, console: true, module: true, document: true },
+			curly: true,
+			eqeqeq: true,
+			eqnull: true,
+			browser: true }))
 		.pipe(concat('module.js'))
 		.pipe(gulp.dest(_jsDEST));
 	
@@ -121,12 +137,10 @@ gulp.task('copyCSS', function() {
 		.pipe(gulp.dest('./public/css/'));
 });
 
-//
 //gulp.task('copy2', function () {
 //	return gulp.src(['some/other/folders/src/public/**/*', 'some/other/folders/src/vendor/**/*'],{base: 'other'})
 //		.pipe(gulp.dest('build'));
 //});
-
 
 /* -----------------------------------------
  * Gulp Update
@@ -168,15 +182,23 @@ gulp.task('watch', function(){
 	}
 });
 
-gulp.task('build-clean', function() {
-	// Return the Promise from del()
-	return del(['./public/js/*.js', './public/css/*.css','!public/assets/goat.png']).then(paths =>{ console.log('Deleted files and folders:\n',paths.join('\n')); });
-	// 'return' is the key here, to make sure asynchronous tasks are done!
-});
-gulp.task('build', function(callback) {
-	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint','copyJS','copyCSS', callback);
-});
-gulp.task('default', ['watch','copyLib','styleSASS','jsConcat','jScript'], function(){
+gulp.task('default', ['watch','styleSASS','jsConcat','jScript'], function(){
 	//
 });
+
+/* -----------------------------------------
+ * Build
+ * ----------------------------------------- */
+gulp.task('build-clean', function() {
+	// Return the Promise from del()
+	// 'return' is the key here, to make sure asynchronous tasks are done!
+	return del(['./public/js/*.js', './public/css/*.css','!public/assets/goat.png']).then(paths => { 
+		console.log('Deleted files and folders:\n',paths.join('\n')); 
+	});
+});
+
+gulp.task('build', function(callback) {
+	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint',['copyJS','copyCSS'], callback);
+});
+
 
