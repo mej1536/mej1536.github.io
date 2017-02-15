@@ -2,31 +2,28 @@
 /*! ------------------------------ 
  * Description:
  * ------------------------------ */
- @import '_variables/variables';
+@import '_variables/variables';
 @import '_mixins/mixins';
+
 @import 'fragment_Base/reset'; 
 @import 'fragment_Base/normalize';
 @import 'fragment_Base/fonts';
 @import 'fragment_Base/skip';
 
-body {position:relative;}
-
-#test3 {font-size:16px;}
-.bcd2 {background:blue; border:1px solid red}
-.aaa2 {width:100px;}
 
 /*
  그밖에 세분화 파일명(고려사항)
  print main template module object
  */
-
 /*! fonts */
 html,body{font-size:13px; color:#666; @include defaultSetFont;}
 
 
-/*! ----- 공통사용 ----- */ 
-@import 'fragment_UI/btns';
-@import 'fragment_UI/table';
+
+body {position:relative;}
+#test3 {font-size:16px;}
+.bcd2 {background:blue; border:1px solid red}
+.aaa2 {width:100px;}
 
 a {display:inline-block}
 a>span {border:1px solid blue;}

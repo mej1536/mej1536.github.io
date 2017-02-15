@@ -74,19 +74,12 @@ body,html{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고�
 #skipNaviReturn{position:relative}
 #skipNaviReturn a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#fff}
 #skipNaviReturn a:active,#skipNaviReturn a:focus{width:auto;height:auto;margin-bottom:10px;padding:5px;background:#0075b1}
+/*! fonts */
+body,html{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;font-size:13px;color:#666}
 body{position:relative}
 #test3{font-size:16px}
 .bcd2{border:1px solid red;background:#00f}
 .aaa2{width:100px}
-/*! fonts */
-body,html{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;font-size:13px;color:#666}
-
-/*! ----- 공통사용 ----- */
-/*! 버튼 */
-.btn{display:inline-block}
-a.abc{color:#656565;background:#f6f6f6}
-/*! tables */
-table{width:100%}
 a{display:inline-block}
 a>span{border:1px solid #00f}
 #a1>p{display:inline}

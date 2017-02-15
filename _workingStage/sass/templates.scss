@@ -6,8 +6,13 @@
 @import '_mixins/mixins';
 
 
+
+/*! ----- 공통사용 ----- */ 
 @import 'fragment_UI/btns';
 @import 'fragment_UI/table';
+
+
+
 
 span>span{display:block;}
 
