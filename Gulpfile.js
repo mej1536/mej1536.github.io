@@ -29,7 +29,8 @@ var gulp  = require('gulp'),
 	gcallback = require('gulp-callback')
 ;
 
-
+//NodeJs error solved
+//warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
 var events = require('events');
 events.EventEmitter.defaultMaxListeners = 100;
 
@@ -40,7 +41,8 @@ events.EventEmitter.defaultMaxListeners = 100;
 var _sassSRC  = './_workingStage/sass/**/*.scss';
 var _sassDEST = './public/css/';
 
-//옵션변경 github.com/jakubpawlowicz/clean-css
+//옵션사용방법 변경
+//옵션 참고 : github.com/jakubpawlowicz/clean-css
 //var cleanOptions = new cleanCSS( { format: 'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} });
 
 gulp.task('styleSASS',function(){
@@ -51,8 +53,8 @@ gulp.task('styleSASS',function(){
 			browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
 			cascade: false
 		}))
-		.pipe(cssComb( 'csscomb.json' ))
-		.pipe(cleanCSS( { format: 'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} }))
+		.pipe(cssComb('csscomb.json'))
+		.pipe(cleanCSS( { format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} }))
 		.pipe(replace('/*! -----' , '\n/*! -----'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function(){
@@ -143,11 +145,6 @@ gulp.task('copyCSS', function() {
 		.pipe(gulp.dest('./public/css/'));
 });
 
-//gulp.task('copy2', function () {
-//	return gulp.src(['some/other/folders/src/public/**/*', 'some/other/folders/src/vendor/**/*'],{base: 'other'})
-//		.pipe(gulp.dest('build'));
-//});
-
 /* -----------------------------------------
  * Gulp Update
  * ----------------------------------------- */
@@ -189,7 +186,6 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', ['styleSASS','jsConcat','jScript','htmlHint','watch'], function(){
-	//
 });
 
 /* -----------------------------------------
