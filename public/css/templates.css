@@ -1,0 +1,21 @@
+@charset 'UTF-8';
+
+/*! ------------------------------ 
+ * Description:
+ * ------------------------------ */
+/*! 버튼 */
+.btn{display:inline-block}
+a.abc{color:#656565;background:#f6f6f6}
+/*! tables */
+table{width:100%}
+span>span{display:block}
+#testBox{width:500px}
+#testBox>div:first-child{height:100px;border:1px solid #00f}
+#testBox>div{width:100%;background:#00f}
+#task{width:100px}
+/*! 테스트 왜?????? */
+div>div{display:table;width:100%}
+div>div>span{width:10px}
+/*! 테스트3 */
+#abc{width:101px}
+/*! 다시 */

@@ -3,7 +3,7 @@
  * 작업폴더  : ./_workingStage
  * 최종산출물: ./public
  * ------------------------------------------------
- * 최종수정일: 2017.02.07
+ * 최종수정일: 2017.02.15
  * ------------------------------------------------ */
 
 'use strict';
@@ -29,12 +29,19 @@ var gulp  = require('gulp'),
 	gcallback = require('gulp-callback')
 ;
 
+
+var events = require('events');
+events.EventEmitter.defaultMaxListeners = 100;
+
+
 /* -----------------------------------------
  * CSS: Sass
  * ----------------------------------------- */
 var _sassSRC  = './_workingStage/sass/**/*.scss';
 var _sassDEST = './public/css/';
-var cleanOptions = new cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} });
+
+//옵션변경 github.com/jakubpawlowicz/clean-css
+//var cleanOptions = new cleanCSS( { format: 'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} });
 
 gulp.task('styleSASS',function(){
 	return gulp.src(_sassSRC)
@@ -44,10 +51,9 @@ gulp.task('styleSASS',function(){
 			browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
 			cascade: false
 		}))
-		.pipe(cleanOptions)
 		.pipe(cssComb( 'csscomb.json' ))
+		.pipe(cleanCSS( { format: 'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} }))
 		.pipe(replace('/*! -----' , '\n/*! -----'))
-		//.pipe(replace('/*!' , '/*'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function(){
 				console.log('** task done : styleSASS');
@@ -182,7 +188,7 @@ gulp.task('watch', function(){
 	}
 });
 
-gulp.task('default', ['watch','styleSASS','jsConcat','jScript'], function(){
+gulp.task('default', ['styleSASS','jsConcat','jScript','htmlHint','watch'], function(){
 	//
 });
 

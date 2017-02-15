@@ -4,7 +4,8 @@
  * Description:
  * ------------------------------ */
 /*! layout */
-#wrapper{width:1080px;}
+#wrapper{width:1080px}
 /*! 테스트 -- */
-div{background:#0000ff;}
-div>div{border:1px solid #0000ff;}
+div{background:#00f}
+div>div{border:1px solid #00f}
+span.ico{width:100px}

@@ -3,7 +3,6 @@
 @import '_mixins/mixins';
 
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
-
 /**
  * 1. Change the default font family in all browsers (opinionated).
  * 2. Correct the line height in all browsers.
@@ -11,9 +10,7 @@
  *    IE on Windows Phone and in iOS.
  */
 
-/* Document
-   ========================================================================== */
-
+/* Document ========================================================================== */
 html {
   font-family: sans-serif; /* 1 */
   line-height: 1.15; /* 2 */
@@ -21,21 +18,17 @@ html {
   -webkit-text-size-adjust: 100%; /* 3 */
 }
 
-/* Sections
-   ========================================================================== */
-
+/* Sections ========================================================================== */
 /**
  * Remove the margin in all browsers (opinionated).
  */
 
 body {margin: 0;}
-
 /**
  * Add the correct display in IE 9-.
  */
 
 article,aside,footer,header,nav,section {display: block;}
-
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -43,14 +36,11 @@ article,aside,footer,header,nav,section {display: block;}
 
 h1 {font-size: 2em; margin: 0.67em 0;}
 
-/* Grouping content
-   ========================================================================== */
-
+/* Grouping content ========================================================================== */
 /**
  * Add the correct display in IE 9-.
  * 1. Add the correct display in IE.
  */
-
 figcaption,
 figure,
 main { /* 1 */ display: block;}
@@ -58,14 +48,11 @@ main { /* 1 */ display: block;}
 /**
  * Add the correct margin in IE 8.
  */
-
 figure { margin:1em 40px;}
-
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
-
 hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
@@ -186,14 +173,12 @@ img {border-style: none;}
 
 svg:not(:root) {overflow: hidden;}
 
-/* Forms
-   ========================================================================== */
+/* Forms ========================================================================== */
 
 /**
  * 1. Change the font styles in all browsers (opinionated).
  * 2. Remove the margin in Firefox and Safari.
  */
-
 button,input,optgroup,select,textarea {
   font-family: sans-serif; /* 1 */
   font-size: 100%; /* 1 */
@@ -205,14 +190,12 @@ button,input,optgroup,select,textarea {
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
-
 button,input { /* 1 */ overflow: visible;}
 
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
-
 button,select { /* 1 */ text-transform: none;}
 
 /**
@@ -336,8 +319,7 @@ textarea {
   font: inherit; /* 2 */
 }
 
-/* Interactive
-   ========================================================================== */
+/* Interactive ========================================================================== */
 
 /*
  * Add the correct display in IE 9-.
@@ -353,8 +335,7 @@ menu {display: block;}
 
 summary {display: list-item;}
 
-/* Scripting
-   ========================================================================== */
+/* Scripting  ========================================================================== */
 
 /**
  * Add the correct display in IE 9-.
@@ -368,8 +349,7 @@ canvas {display: inline-block;}
 
 template {display: none;}
 
-/* Hidden
-   ========================================================================== */
+/* Hidden ========================================================================== */
 
 /**
  * Add the correct display in IE 10-.

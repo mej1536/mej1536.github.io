@@ -3,37 +3,90 @@
 /*! ------------------------------ 
  * Description:
  * ------------------------------ */
-/*! 재설정 */
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;}
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
-audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
-body{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;font-size:12px;color:#666666;background:#ffffff;}
-table{table-layout:fixed;border-spacing:0;border-collapse:collapse;}
-hr{display:none;}
-em,i{font-style:normal;}
-ol,ul{list-style:none;}
-blockquote,q{quotes:none;}
-blockquote:after,blockquote:before,q:after,q:before{content:'';content:none;}
-abbr[title]{border-bottom:1px dotted;}
-mark{color:#000000;background:#ffff00;}
-sub,sup{position:relative;line-height:0;vertical-align:baseline;}
-sup{top:-.5em;}
-sub{bottom:-.25em;}
-svg:not(:root){overflow:hidden;}
-pre,textarea{overflow:auto;}
-.clearfix:after,.clearfix:before{display:table;line-height:0;content:'';}
-.clearfix:after{clear:both;}
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+body{background:#fff}
+table{table-layout:fixed;border-spacing:0;border-collapse:collapse}
+hr{display:none}
+em,i{font-style:normal}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}
+abbr[title]{border-bottom:1px dotted}
+mark{color:#000;background:#ff0}
+sub,sup{position:relative;line-height:0;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+svg:not(:root){overflow:hidden}
+pre,textarea{overflow:auto}
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0}
+article,aside,footer,header,nav,section{display:block}
+h1{margin:.67em 0;font-size:2em}
+figcaption,figure,main{display:block}
+figure{margin:1em 40px}
+hr{overflow:visible;-webkit-box-sizing:content-box;box-sizing:content-box;height:0}
+pre{font-family:monospace,monospace;font-size:1em}
+a{background-color:transparent;-webkit-text-decoration-skip:objects}
+a:active,a:hover{outline-width:0}
+abbr[title]{text-decoration:underline;text-decoration:underline dotted;border-bottom:none}
+b,strong{font-weight:inherit}
+b,strong{font-weight:bolder}
+code,kbd,samp{font-family:monospace,monospace;font-size:1em}
+dfn{font-style:italic}
+mark{color:#000;background-color:#ff0}
+small{font-size:80%}
+sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+img{border-style:none}
+svg:not(:root){overflow:hidden}
+button,input,optgroup,select,textarea{margin:0;font-family:sans-serif;font-size:100%;line-height:1.15}
+button,input{overflow:visible}
+button,select{text-transform:none}
+[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}
+[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}
+[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}
+fieldset{margin:0 2px;padding:.35em .625em .75em;border:1px solid silver}
+legend{display:table;-webkit-box-sizing:border-box;box-sizing:border-box;max-width:100%;padding:0;white-space:normal;color:inherit}
+progress{display:inline-block;vertical-align:baseline}
+textarea{overflow:auto}
+[type=checkbox],[type=radio]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}
+[type=search]{outline-offset:-2px;-webkit-appearance:textfield}
+[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}
+details,menu{display:block}
+summary{display:list-item}
+canvas{display:inline-block}
+template{display:none}
+[hidden]{display:none}
+/*! fonts */
+body,html{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;font-size:13px;color:#666}
+/*! Skip Navigation */
+#skipNavi{position:absolute;z-index:10000;width:100%;text-align:center}
+#skipNavi a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#fff}
+#skipNavi a:active,#skipNavi a:focus{width:auto;height:auto;padding:5px;background:#0075b1}
+#skipNaviReturn{position:relative}
+#skipNaviReturn a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#fff}
+#skipNaviReturn a:active,#skipNaviReturn a:focus{width:auto;height:auto;margin-bottom:10px;padding:5px;background:#0075b1}
+body{position:relative}
+#test3{font-size:16px}
+.bcd2{border:1px solid red;background:#00f}
+.aaa2{width:100px}
+/*! fonts */
+body,html{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;font-size:13px;color:#666}
 
 /*! ----- 공통사용 ----- */
-/*! Skip Navigation */
-#skipNavi{position:absolute;z-index:10000;width:100%;text-align:center;}
-#skipNavi a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
-#skipNavi a:active,#skipNavi a:focus{width:auto;height:auto;padding:5px;background:#0075b1;}
-#skipNaviReturn{position:relative;}
-#skipNaviReturn a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
-#skipNaviReturn a:active,#skipNaviReturn a:focus{width:auto;height:auto;margin-bottom:10px;padding:5px;background:#0075b1;}
 /*! 버튼 */
-.btn{display:inline-block;}
-a.abc{color:#656565;background:#f6f6f6;}
+.btn{display:inline-block}
+a.abc{color:#656565;background:#f6f6f6}
 /*! tables */
-table{width:100%;}
+table{width:100%}
+a{display:inline-block}
+a>span{border:1px solid #00f}
+#a1>p{display:inline}

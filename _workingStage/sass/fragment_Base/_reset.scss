@@ -8,7 +8,7 @@ article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,n
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} /* HTML5 display-role reset for older browsers */
 audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
 
-body {background:#fff;font-size:12px; color:#666;@include defaultSetFont;}
+body {background:#fff;}
 table{table-layout:fixed; @include tableSpacing;}
 h1,h2,h3,h4,h5,h6 {}
 hr{display:none;}
