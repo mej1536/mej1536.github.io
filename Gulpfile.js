@@ -54,7 +54,7 @@ gulp.task('styleSASS',function(){
 			cascade: false
 		}))
 		.pipe(cssComb('csscomb.json'))
-		.pipe(cleanCSS( { format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} }))
+		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
 		.pipe(replace('/*! -----' , '\n/*! -----'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function(){
