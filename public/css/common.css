@@ -40,6 +40,7 @@ em,i{font-style:normal;}
 mark{color:#000000;background:#ffff00;}
 
 /*! ----- 공통 ----- */
+body{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;}
 /*! clear */
 .clearfix:after,.clearfix:before{display:block;content:'';}
 .clearfix:after{clear:both;}
@@ -50,7 +51,6 @@ mark{color:#000000;background:#ffff00;}
 #skipNaviReturn{position:relative;}
 #skipNaviReturn a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
 #skipNaviReturn a:active,#skipNaviReturn a:focus{width:auto;height:auto;margin-bottom:10px;padding:5px;background:#0075b1;}
-body{font-family:'Nanum Gothic','나눔고딕','돋움',Dotum,'맑은 고딕','Malgun Gothic',Sans-Serif;}
 
 /*! ----- 프린트 ----- */
 @media print{
