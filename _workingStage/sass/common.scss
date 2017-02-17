@@ -4,7 +4,7 @@
  * 
  * 
  * ------------------------------------------------------------ */
-@import '_variables/variables';
+@import 'variables';
 @import '_mixins/mixins';
 
 
@@ -13,6 +13,10 @@
 
 
 /*! ----- 공통 ----- */
-@import 'fragment_Base/fonts';
+@import 'fragment_Base/clearfix';
 @import 'fragment_Base/skip';
+@import 'fragment_Base/fonts';
+
+
+/*! ----- 프린트 ----- */
 @import 'fragment_Base/print';

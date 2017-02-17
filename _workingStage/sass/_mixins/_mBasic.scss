@@ -3,11 +3,17 @@
 //기본설정
 @mixin defaultSetZero {border:0;margin:0; padding:0;}
 @mixin defaultSetFont {@include fontSysDesktop;}
-@mixin clearfix { *zoom:1;
-	&:before,&:after {display:table; content:""; line-height: 0;}
-	&:after {clear:both;}
-}
 
+@mixin clearfix {
+	&:before, 
+	&:after { 
+		display: block; 
+		content:"";
+	}
+	&:after {
+		clear: both;
+	}
+}
 
 
 //테이블
