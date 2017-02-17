@@ -1,6 +1,21 @@
-/* ------------------------------ 
- * Description:
- * ------------------------------ */
+@charset 'UTF-8';
+/** -----------------------------------------------------------
+ * Description : 믹스인 전체
+ * Directory   : /sass
+ * File Name   : _mixins.scss
+ * ------------------------------------------------------------
+ */
 
-// Mixins
+
+
+// 기본설정
 @import '_mixins/mBasic';
+
+// 레이아웃
+@import '_mixins/mLayout';
+
+// 버튼
+@import '_mixins/_mButton';
+
+// 폼
+@import '_mixins/_mFormControl';

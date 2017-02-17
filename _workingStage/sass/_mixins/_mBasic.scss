@@ -1,9 +1,17 @@
-@charset "UTF-8";
+@charset 'UTF-8';
+/** -----------------------------------------------------------
+ * Description : 기본설정 믹스인
+ * Directory   : sass > fragment_Bas > _mixins
+ * File Name   : _mBasic.scss
+ * ------------------------------------------------------------
+ */
+
 
 //기본설정
 @mixin defaultSetZero {border:0;margin:0; padding:0;}
 @mixin defaultSetFont {@include fontSysDesktop;}
 
+//클리어픽스
 @mixin clearfix {
 	&:before, 
 	&:after { 
@@ -14,6 +22,13 @@
 		clear: both;
 	}
 }
+
+
+
+
+
+
+
 
 
 //테이블
