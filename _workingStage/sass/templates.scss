@@ -8,37 +8,46 @@
 @import 'mixins';
 
 
-//여기부터
-@import 'fragment_UI/alerts';
-@import 'fragment_UI/animate';
-@import 'fragment_UI/badge';
+//공통요소
+@import 'fragment_UI/nav';
+@import 'fragment_UI/menus';
+@import 'fragment_UI/global';
+@import 'fragment_UI/footer';
+@import 'fragment_UI/typography';
+
+
+//오브젝트 단위분리
+@import 'fragment_UI/btns';
+@import 'fragment_UI/icons';
 @import 'fragment_UI/banner';
 @import 'fragment_UI/box';
-@import 'fragment_UI/btns';
-@import 'fragment_UI/carousel';
-@import 'fragment_UI/footer';
-@import 'fragment_UI/forms';
-@import 'fragment_UI/global';
-@import 'fragment_UI/icons';
-@import 'fragment_UI/layer';
 @import 'fragment_UI/list';
-@import 'fragment_UI/menus';
+@import 'fragment_UI/forms';
 
-@import 'fragment_UI/nav';
-@import 'fragment_UI/pagination';
-@import 'fragment_UI/popover';
-@import 'fragment_UI/result';
-@import 'fragment_UI/slider';
-@import 'fragment_UI/tab';
+
+// 테이블
 @import 'fragment_UI/table';
+@import 'fragment_UI/pagination';
+@import 'fragment_UI/result';
+
+
+//팝업,레이어
+@import 'fragment_UI/alerts';
+@import 'fragment_UI/layer';
+@import 'fragment_UI/tooltip';
+@import 'fragment_UI/popover';
+
+
+//기능(스크립트)
+@import 'fragment_UI/tab';
 @import 'fragment_UI/toggle';
 
 
-@import 'fragment_UI/tooltip';
-@import 'fragment_UI/typography';
+//애니메이트,동영상
+@import 'fragment_UI/animate';
 @import 'fragment_UI/youtube';
-
-
+@import 'fragment_UI/slider';
+@import 'fragment_UI/carousel';
 
 
 
