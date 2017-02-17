@@ -1,33 +1,18 @@
 @charset 'UTF-8';
-/*! ------------------------------ 
- * Description:
- * ------------------------------ */
+/** -----------------------------------------------------------
+ * Description :
+ * 
+ * 
+ * ------------------------------------------------------------ */
 @import '_variables/variables';
 @import '_mixins/mixins';
 
+
+//초기화
 @import 'fragment_Base/reset'; 
-@import 'fragment_Base/normalize';
+
+
+/*! ----- 공통 ----- */
 @import 'fragment_Base/fonts';
 @import 'fragment_Base/skip';
-
-
-/*
- 그밖에 세분화 파일명(고려사항)
- print main template module object
- */
-/*! fonts */
-html,body{font-size:13px; color:#666; @include defaultSetFont;}
-
-
-
-body {position:relative;}
-#test3 {font-size:16px;}
-.bcd2 {background:blue; border:1px solid red}
-.aaa2 {width:100px;}
-
-a {display:inline-block}
-a>span {border:1px solid blue;}
-
-#a1 {
-	>p {display:inline;}
-}
+@import 'fragment_Base/print';

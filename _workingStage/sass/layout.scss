@@ -1,16 +1,11 @@
 @charset 'UTF-8';
-/*! ------------------------------ 
- * Description:
- * ------------------------------ */
+/** -----------------------------------------------------------
+ * Description :
+ * 
+ * 
+ * ------------------------------------------------------------ */
 @import '_variables/variables';
 @import '_mixins/mixins';
 
-/*! layout */
-#wrapper {width:$widthMax;}
 
-/*! 테스트 -- */
-div {background:blue;
-	>div {border:1px solid blue;}
-}
-
-span.ico {width:100px;}
+//여기부터

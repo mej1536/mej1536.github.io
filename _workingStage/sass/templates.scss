@@ -1,38 +1,13 @@
 @charset 'UTF-8';
-/*! ------------------------------ 
- * Description:
- * ------------------------------ */
+/** -----------------------------------------------------------
+ * Description :
+ * 
+ * 
+ * ------------------------------------------------------------ */
 @import '_variables/variables';
 @import '_mixins/mixins';
 
 
-
-/*! ----- 공통사용 ----- */ 
+//여기부터
 @import 'fragment_UI/btns';
 @import 'fragment_UI/table';
-
-
-
-
-span>span{display:block;}
-
-#testBox {width:500px;
-	> div:first-child {border:1px solid blue; height:100px;}
-	>div{width:100%; background:blue}
-}
-
-#task{width:100px}
-/*! 테스트 왜?????? */
-
-
-
-div>div {display:table; width:100%; 
-	>span {width:10px;}
-}
- 
- 
- 
- /*! 테스트3 */
- #abc {width:101px;}
- 
- /*! 다시 */

@@ -1,2 +1,2 @@
 /*! fonts */
-html,body{font-size:13px; color:#666; @include defaultSetFont;}
+body{@include defaultSetFont;}

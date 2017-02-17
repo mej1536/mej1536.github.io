@@ -1,11 +1,1 @@
 @charset 'UTF-8';
-
-/*! ------------------------------ 
- * Description:
- * ------------------------------ */
-/*! layout */
-#wrapper{width:1080px}
-/*! 테스트 -- */
-div{background:#00f}
-div>div{border:1px solid #00f}
-span.ico{width:100px}

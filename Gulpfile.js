@@ -49,13 +49,14 @@ gulp.task('styleSASS',function(){
 	return gulp.src(_sassSRC)
 		.pipe(plumber())
 		.pipe(cssSass({outputStyle:'expanded'}))
+		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
 		.pipe(autoprefixer({
 			browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
 			cascade: false
 		}))
 		.pipe(cssComb('csscomb.json'))
-		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
-		.pipe(replace('/*! -----' , '\n/*! -----'))
+		.pipe(replace('/*! -----','\n/*! -----'))
+		.pipe(replace(';}}',';}\n}'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function(){
 				console.log('** task done : styleSASS');
