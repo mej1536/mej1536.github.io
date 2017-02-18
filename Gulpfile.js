@@ -119,7 +119,7 @@ var _jsSRC  = './_workingStage/js/*.js';
 var _jsDEST = './public/js/';
 
 // 분리된 파일 전체를 1개 파일로
-gulp.task('jsConcat',function(){
+gulp.task('JSConcat_ONE',function(){
 	return gulp.src(_jsSRC)
 		.pipe(jshint(JShintOP))
 		.pipe(jshint.reporter(jshintXMLReporter))
@@ -128,13 +128,13 @@ gulp.task('jsConcat',function(){
 		.pipe(concat('public.js'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
-			console.log('** task done : jsConcat');
+			console.log('** task done : JSConcat_ONE');
 		})
 	);
 });
 
 // 파일명 여러개로
-gulp.task('jScript',function(){
+gulp.task('JSConcat_TWO',function(){
 	//기본공통
 	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js'])
 		.pipe(concat('common.js'))
@@ -171,7 +171,7 @@ gulp.task('build-clean', function() {
 	});
 });
 gulp.task('build', function(done) {
-	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint',['copyJS','copyCSS'], function(){
+	runSequence('build-clean', ['styleSASS', 'JSConcat_ONE','JSConcat_TWO'],'htmlHint',['copyJS','copyCSS'], function(){
 		console.log('** task build : Build Finished!!');
 		done();
 	});
@@ -179,7 +179,7 @@ gulp.task('build', function(done) {
 
 gulp.slurped = false;
 gulp.task('watch', function(){
-	if(!gulp.slurped){ //gulpfile.js changed
+	if(!gulp.slurped){
 		gulp.watch(['./Gulpfile.js'],['default']);
 		gulp.slurped = true;
 	}
@@ -187,9 +187,9 @@ gulp.task('watch', function(){
 	//모듈 업데이트 할때만 사용하기로..
 	//gulp.start('update-modul');
 	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
-	gulp.watch(['./_workingStage/js/*.js'],['jsConcat','jScript','jsHINT']);
+	gulp.watch(['./_workingStage/js/*.js'],['JSConcat_ONE','JSConcat_TWO','jsHINT']);
 	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
 });
 
-gulp.task('default', ['styleSASS','jsConcat','jScript','jsHINT','htmlHint','watch'], function(){
+gulp.task('default', ['styleSASS','JSConcat_ONE','JSConcat_TWO','jsHINT','htmlHint','watch'], function(){
 });
