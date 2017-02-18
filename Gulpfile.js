@@ -6,28 +6,27 @@
  * 최종수정일: 2017.02.18
  * ------------------------------------------------
  */
-
 'use strict';
-var gulp  = require('gulp'),
-	upmodul = require('gulp-update-modul'),
-	plumber = require('gulp-plumber'),
-	watch = require('gulp-watch'),
-	merge = require('merge-stream'),
-	copy  = require('gulp-contrib-copy'),
-	changed = require('gulp-changed'),
-	replace = require('gulp-replace'),
-	cssSass = require('gulp-sass'),
-	cleanCSS = require('gulp-clean-css'),
-	cssComb  = require('gulp-csscomb'),
-	autoprefixer = require('gulp-autoprefixer'),
-	concat = require('gulp-concat'),
-	jshint = require('gulp-jshint'),
-	htmlhint = require('gulp-htmlhint'),
-	jshintXMLReporter = require('gulp-jshint-xml-file-reporter'),
-	htmlhintReporter = require('gulp-htmlhint-html-reporter'),
-	del = require('del'),
-	runSequence = require('run-sequence'),
-	gcallback = require('gulp-callback')
+var gulp	= require('gulp'),
+    upmodul	= require('gulp-update-modul'),
+    plumber	= require('gulp-plumber'),
+    watch	= require('gulp-watch'),
+    merge	= require('merge-stream'),
+    copy	= require('gulp-contrib-copy'),
+    changed	= require('gulp-changed'),
+    replace	= require('gulp-replace'),
+    cssSass	= require('gulp-sass'),
+    cleanCSS	= require('gulp-clean-css'),
+    cssComb  	= require('gulp-csscomb'),
+    autoprefixer = require('gulp-autoprefixer'),
+    concat  	= require('gulp-concat'),
+    jshint  	= require('gulp-jshint'),
+    htmlhint 	= require('gulp-htmlhint'),
+    del     	= require('del'),
+    runSequence = require('run-sequence'),
+    gcallback	= require('gulp-callback'),
+    htmlhintReporter  = require('gulp-htmlhint-html-reporter'),
+    jshintXMLReporter = require('gulp-jshint-xml-file-reporter')
 ;
 
 /** ---------------------------------------------------
