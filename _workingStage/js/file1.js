@@ -20,5 +20,3 @@ function aaa(){
 }
 // line in footer
 // footer
-
-

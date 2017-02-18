@@ -114,22 +114,17 @@ gulp.task('styleSASS',function(){
  *  JavaScript
  *  ---------------------------------------------------
  */
+var JShintOP = { globals: {jQuery:true, console:true, module:true, document:true}, curly:true, eqeqeq:true, eqnull:true, browser:true /*,undef:true, unused:true*/};
 var _jsSRC  = './_workingStage/js/*.js';
 var _jsDEST = './public/js/';
 
 // 분리된 파일 전체를 1개 파일로
 gulp.task('jsConcat',function(){
 	return gulp.src(_jsSRC)
-		.pipe(jshint({
-		//	undef:true, 
-		//	unused:true,
-			globals: { jQuery: true, console: true, module: true, document: true },
-			curly: true,
-			eqeqeq: true,
-			eqnull: true,
-			browser: true }))
+		.pipe(jshint(JShintOP))
 		.pipe(jshint.reporter(jshintXMLReporter))
-		.on('end', jshintXMLReporter.writeFile({ format: 'checkstyle', filePath: './jshint.xml', alwaysReport: 'true' }))
+		//filePath 때문에 멀티 Task 실행시 오류..
+		//.on('end', jshintXMLReporter.writeFile({ format: 'checkstyle', filePath: './jshint.xml', alwaysReport: 'true' }))
 		.pipe(concat('public.js'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
@@ -140,31 +135,28 @@ gulp.task('jsConcat',function(){
 
 // 파일명 여러개로
 gulp.task('jScript',function(){
+	//기본공통
 	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js'])
-		.pipe(jshint({
-		//	undef:true, 
-		//	unused:true,
-			globals: { jQuery: true, console: true, module: true, document: true },
-			curly: true,
-			eqeqeq: true,
-			eqnull: true,
-			browser: true }))
 		.pipe(concat('common.js'))
 		.pipe(gulp.dest(_jsDEST));
 	
+	//모듈전용
 	var streamJsSRC2 = gulp.src(['./_workingStage/js/file3.js', './_workingStage/js/file4.js'])
-		.pipe(jshint({
-		//	undef:true, 
-		//	unused:true,
-			globals: { jQuery: true, console: true, module: true, document: true },
-			curly: true,
-			eqeqeq: true,
-			eqnull: true,
-			browser: true }))
 		.pipe(concat('module.js'))
 		.pipe(gulp.dest(_jsDEST));
 	
 	return merge(streamJsSRC1, streamJsSRC2);
+});
+
+gulp.task('jsHINT',function(){
+	return gulp.src(['./public/js/**/*.js','!./public/js/lib/*.js'])
+		.pipe(jshint(JShintOP))
+		.pipe(jshint.reporter(jshintXMLReporter))
+		.on('end', jshintXMLReporter.writeFile({ format:'checkstyle', alwaysReport: 'true' }))
+		.pipe(gcallback(function(){
+			console.log('** task done : jsHINT');
+		})
+	);
 });
 
 /** ---------------------------------------------------
@@ -179,7 +171,7 @@ gulp.task('build-clean', function() {
 	});
 });
 gulp.task('build', function(done) {
-	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint',['copyJS','copyCSS'],function(){
+	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint',['copyJS','copyCSS'], function(){
 		console.log('** task build : Build Finished!!');
 		done();
 	});
@@ -195,9 +187,9 @@ gulp.task('watch', function(){
 	//모듈 업데이트 할때만 사용하기로..
 	//gulp.start('update-modul');
 	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
-	gulp.watch(['./_workingStage/js/*.js'],['jsConcat','jScript']);
+	gulp.watch(['./_workingStage/js/*.js'],['jsConcat','jScript','jsHINT']);
 	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
 });
 
-gulp.task('default', ['styleSASS','jsConcat','jScript','htmlHint','watch'], function(){
+gulp.task('default', ['styleSASS','jsConcat','jScript','jsHINT','htmlHint','watch'], function(){
 });

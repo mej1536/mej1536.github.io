@@ -21,8 +21,6 @@ function aaa(){
 // line in footer
 // footer
 
-
-
 /** ------------------------
  * 테스트 파일2
  * 
@@ -42,8 +40,12 @@ function aaa(){
 // line in footer
 // footer
 
+abc();''
 
+carousel();
+carousel()
 
+function carousel{}
 /** ------------------------
  * 테스트 파일4
  * 

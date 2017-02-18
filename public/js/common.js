@@ -21,8 +21,6 @@ function aaa(){
 // line in footer
 // footer
 
-
-
 /** ------------------------
  * 테스트 파일2
  * 
