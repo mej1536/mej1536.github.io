@@ -114,17 +114,15 @@ gulp.task('styleSASS',function(){
  *  JavaScript
  *  ---------------------------------------------------
  */
-var JShintOP = { globals: {jQuery:true, console:true, module:true, document:true}, curly:true, eqeqeq:true, eqnull:true, browser:true /*,undef:true, unused:true*/};
 var _jsSRC  = './_workingStage/js/*.js';
 var _jsDEST = './public/js/';
+var JShintOP = { globals: {jQuery:true, console:true, module:true, document:true}, curly:true, eqeqeq:true, eqnull:true, browser:true /*,undef:true, unused:true*/};
 
 // 분리된 파일 전체를 1개 파일로
 gulp.task('JSConcat_ONE',function(){
 	return gulp.src(_jsSRC)
 		.pipe(jshint(JShintOP))
 		.pipe(jshint.reporter(jshintXMLReporter))
-		//filePath 때문에 멀티 Task 실행시 오류..
-		//.on('end', jshintXMLReporter.writeFile({ format: 'checkstyle', filePath: './jshint.xml', alwaysReport: 'true' }))
 		.pipe(concat('public.js'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
@@ -138,12 +136,18 @@ gulp.task('JSConcat_TWO',function(){
 	//기본공통
 	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js'])
 		.pipe(concat('common.js'))
-		.pipe(gulp.dest(_jsDEST));
+		.pipe(gulp.dest(_jsDEST))
+		.pipe(gcallback(function(){
+			console.log('** task done : JSConcat_SRC1');
+		}));
 	
 	//모듈전용
 	var streamJsSRC2 = gulp.src(['./_workingStage/js/file3.js', './_workingStage/js/file4.js'])
 		.pipe(concat('module.js'))
-		.pipe(gulp.dest(_jsDEST));
+		.pipe(gulp.dest(_jsDEST))
+		.pipe(gcallback(function(){
+			console.log('** task done : JSConcat_SRC2');
+		}));
 	
 	return merge(streamJsSRC1, streamJsSRC2);
 });
