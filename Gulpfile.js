@@ -1,10 +1,11 @@
-/* ------------------------------------------------
+﻿/** -----------------------------------------------
  * Directory
  * 작업폴더  : ./_workingStage
  * 최종산출물: ./public
  * ------------------------------------------------
  * 최종수정일: 2017.02.18
- * ------------------------------------------------ */
+ * ------------------------------------------------
+ */
 
 'use strict';
 var gulp  = require('gulp'),
@@ -29,21 +30,67 @@ var gulp  = require('gulp'),
 	gcallback = require('gulp-callback')
 ;
 
-//NodeJs error solved
-//warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+/** ---------------------------------------------------
+ *  Update Modul
+ *  ---------------------------------------------------
+ */
+gulp.task('update-modul', function() {
+	return gulp.src('package.json')
+		.pipe(upmodul('latest', 'false')); //update all modules latest version.
+});
+
+/** ---------------------------------------------------
+ *  NodeJs Error solved
+ *  Error Message>>
+ *  warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+ *  ---------------------------------------------------
+ */
 var events = require('events');
 events.EventEmitter.defaultMaxListeners = 100;
 
+/** ---------------------------------------------------
+ *  HTML
+ *  ---------------------------------------------------
+ */
+var _htmlSRC  = './public/**/*.{html,jsp}';
+gulp.task('htmlHint',function(){
+	return gulp.src(_htmlSRC)
+		.pipe(htmlhint('.htmlhintrc'))
+		.pipe(htmlhint.reporter(htmlhintReporter, {
+			 createMissingFolders : 'false'
+		}));
+});
 
-/* -----------------------------------------
- * CSS: Sass
- * ----------------------------------------- */
+/** ---------------------------------------------------
+ *   Changed, Copy
+ *  ---------------------------------------------------
+ */
+gulp.task('copyJS', function() {
+	return gulp.src(['./_workingStage/js/lib/*.js'])
+		.pipe(copy())
+		.pipe(gulp.dest('./public/js/lib/'));
+});
+
+gulp.task('copyCSS', function() {
+	return gulp.src(['./_workingStage/css/**/*.css'])
+		.pipe(copy())
+		.pipe(gulp.dest('./public/css/'));
+});
+
+var originSRC  = './public/**/*.*';
+var copiedDEST = './build';
+gulp.task('changedAll', function(){
+	return gulp.src(originSRC)
+		.pipe(changed(copiedDEST)) // changed since the last time it was run
+		.pipe(gulp.dest(copiedDEST));
+});
+
+/** ---------------------------------------------------
+ *  CSS
+ *  ---------------------------------------------------
+ */
 var _sassSRC  = './_workingStage/sass/**/*.scss';
 var _sassDEST = './public/css/';
-
-//옵션사용방법 변경
-//옵션 참고 : github.com/jakubpawlowicz/clean-css
-//var cleanOptions = new cleanCSS( { format: 'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}} });
 
 gulp.task('styleSASS',function(){
 	return gulp.src(_sassSRC)
@@ -64,13 +111,14 @@ gulp.task('styleSASS',function(){
 		);
 });
 
-/* -----------------------------------------
- * JS: jshint, concat
- * ----------------------------------------- */
+/** ---------------------------------------------------
+ *  JavaScript
+ *  ---------------------------------------------------
+ */
 var _jsSRC  = './_workingStage/js/*.js';
 var _jsDEST = './public/js/';
 
-//분리된 파일 전체를 1개 파일로
+// 분리된 파일 전체를 1개 파일로
 gulp.task('jsConcat',function(){
 	return gulp.src(_jsSRC)
 		.pipe(jshint({
@@ -91,7 +139,7 @@ gulp.task('jsConcat',function(){
 	);
 });
 
-//파일명 여러개로
+// 파일명 여러개로
 gulp.task('jScript',function(){
 	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js'])
 		.pipe(jshint({
@@ -120,88 +168,37 @@ gulp.task('jScript',function(){
 	return merge(streamJsSRC1, streamJsSRC2);
 });
 
-/* -----------------------------------------
- * HTML: htmlhint
- * ----------------------------------------- */
-var _htmlSRC  = './public/**/*.{html,jsp}';
-gulp.task('htmlHint',function(){
-	return gulp.src(_htmlSRC)
-		.pipe(htmlhint('.htmlhintrc'))
-		.pipe(htmlhint.reporter(htmlhintReporter, {
-			 createMissingFolders : 'false'
-		}));
-});
-
-/* -----------------------------------------
- * Copy
- * ----------------------------------------- */
-gulp.task('copyJS', function() {
-	return gulp.src(['./_workingStage/js/lib/*.js'])
-		.pipe(copy())
-		.pipe(gulp.dest('./public/js/lib/'));
-});
-gulp.task('copyCSS', function() {
-	return gulp.src(['./_workingStage/css/**/*.css'])
-		.pipe(copy())
-		.pipe(gulp.dest('./public/css/'));
-});
-
-/* -----------------------------------------
- * Gulp Update
- * ----------------------------------------- */
-gulp.task('update-modul', function() {
-	return gulp.src('package.json')
-		.pipe(upmodul('latest', 'false')); //update all modules latest version.
-});
-
-/* -----------------------------------------
- * Changed
- * ----------------------------------------- */
-var originSRC  = './public/**/*.*';
-var copiedDEST = './build';
-
-gulp.task('changedAll', function(){
-	return gulp.src(originSRC)
-		.pipe(changed(copiedDEST)) // changed since the last time it was run
-		.pipe(gulp.dest(copiedDEST));
-});
-
-/* -----------------------------------------
- * Watch
- * ----------------------------------------- */
-gulp.slurped = false;
-gulp.task('watch', function(){
-	gulp.start('update-modul');
-	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
-	gulp.watch(['./_workingStage/js/*.js'],['jsConcat','jScript']);
-	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
-	
-	//gulpfile.js changed
-	if(!gulp.slurped){
-		gulp.watch("gulpfile.js", ["default"]);
-		gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
-		gulp.watch(['./_workingStage/js/*.js'],['jsConcat','jScript']);
-		gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
-		gulp.slurped = true;
-	}
-});
-
-gulp.task('default', ['styleSASS','jsConcat','jScript','htmlHint','watch'], function(){
-});
-
-/* -----------------------------------------
- * Build
- * ----------------------------------------- */
+/** ---------------------------------------------------
+ *  Build, Watch
+ *  ---------------------------------------------------
+ */
 gulp.task('build-clean', function() {
 	// Return the Promise from del()
-	// 'return' is the key here, to make sure asynchronous tasks are done!
+	// Return is the key here, to make sure asynchronous tasks are done!
 	return del(['./public/js/*.js', './public/css/*.css','!public/assets/goat.png']).then(paths => { 
 		console.log('Deleted files and folders:\n',paths.join('\n')); 
 	});
 });
-
-gulp.task('build', function(callback) {
-	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint',['copyJS','copyCSS'], callback);
+gulp.task('build', function(done) {
+	runSequence('build-clean', ['styleSASS', 'jsConcat','jScript'],'htmlHint',['copyJS','copyCSS'],function(){
+		console.log('** task build : Build Finished!!');
+		done();
+	});
 });
 
+gulp.slurped = false;
+gulp.task('watch', function(){
+	if(!gulp.slurped){ //gulpfile.js changed
+		gulp.watch(['./Gulpfile.js'],['default']);
+		gulp.slurped = true;
+	}
+	
+	//모듈 업데이트 할때만 사용하기로..
+	//gulp.start('update-modul');
+	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
+	gulp.watch(['./_workingStage/js/*.js'],['jsConcat','jScript']);
+	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
+});
 
+gulp.task('default', ['styleSASS','jsConcat','jScript','htmlHint','watch'], function(){
+});

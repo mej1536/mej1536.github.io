@@ -4,7 +4,7 @@
  * ------------------------ */
 
 $(function(){
-	
+	//alert()
 });
 
 function dimmedDIV(){
