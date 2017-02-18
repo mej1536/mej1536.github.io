@@ -1,8 +1,1 @@
-﻿{
-	"doctype-first": true,
-	"doctype-html5":true,
-	"id-unique":true,
-	"alt-require":true,
-	"attr-no-duplication": true,
-	"tag-self-close":false
-} 
+{	"doctype-first": true,	"doctype-html5":true,	"id-unique":true,	"alt-require":true,	"attr-no-duplication": true,	"tag-self-close":false} 
