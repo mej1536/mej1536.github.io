@@ -1,0 +1,28 @@
+﻿{
+  "name": "mej1536",
+  "description": "git bower setting",
+  "main": "index.js",
+  "authors": [
+    "mej1536@gmail.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "test",
+    "set"
+  ],
+  "homepage": "mej1536.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "v4.0.0-alpha.6",
+    "jquery": "^3.1.1",
+    "jquery-1.9.1.min": "https://code.jquery.com/jquery-1.9.1.min.js",
+    "jquery-1.12.4.min": "https://code.jquery.com/jquery-1.12.4.min.js",
+    "jquery-2.2.4.min": "https://code.jquery.com/jquery-2.2.4.min.js"
+  }
+}

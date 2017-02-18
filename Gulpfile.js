@@ -134,7 +134,7 @@ gulp.task('JSConcat_ONE',function(){
 // 파일명 여러개로
 gulp.task('JSConcat_TWO',function(){
 	//기본공통
-	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js'])
+	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js','./_workingStage/js/module/tooltip.js'])
 		.pipe(concat('common.js'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
@@ -142,7 +142,7 @@ gulp.task('JSConcat_TWO',function(){
 		}));
 	
 	//모듈전용
-	var streamJsSRC2 = gulp.src(['./_workingStage/js/file3.js', './_workingStage/js/file4.js'])
+	var streamJsSRC2 = gulp.src(['./_workingStage/js/module/carousel.js', './_workingStage/js/module/popover.js'])
 		.pipe(concat('module.js'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
@@ -152,6 +152,7 @@ gulp.task('JSConcat_TWO',function(){
 	return merge(streamJsSRC1, streamJsSRC2);
 });
 
+//오류찾기
 gulp.task('jsHINT',function(){
 	return gulp.src(['./public/js/**/*.js','!./public/js/lib/*.js'])
 		.pipe(jshint(JShintOP))
