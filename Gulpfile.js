@@ -169,7 +169,7 @@ gulp.task('jsHINT',function(){
  *  ---------------------------------------------------
  */
 var sassLint = require('gulp-sass-lint'),
-    bower = require('gulp-bower')
+    bower = require('gulp-bower'),
     gutil = require('gulp-util'),
     notify = require('gulp-notify')
 ;
@@ -217,9 +217,9 @@ gulp.task('bootstrapCSS', function() {
 		.pipe(gulp.dest('./public/css/bootstrap/'));
 });
 
-gulp.task('bootstrapStyle', ['bower', 'awesomeFonts', 'bootstrapCSS']);
+gulp.task('bootstrapStyle', ['bower', 'awesomeFonts', 'bootstrapCSS', 'bootstrapWatch']);
 gulp.task('bootstrapWatch', function() {
-	gulp.watch(config.sassPath + '/**/*.scss', ['css']);
+	gulp.watch(config.sassPath + '/**/*.scss', ['bootstrapCSS']);
 });
 
 /** ---------------------------------------------------
