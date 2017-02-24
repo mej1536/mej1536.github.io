@@ -165,13 +165,71 @@ gulp.task('jsHINT',function(){
 });
 
 /** ---------------------------------------------------
+ *  Bootstrap CSS
+ *  ---------------------------------------------------
+ */
+var sassLint = require('gulp-sass-lint'),
+    bower = require('gulp-bower')
+    gutil = require('gulp-util'),
+    notify = require('gulp-notify')
+;
+var config = { bowerDir: './bower_components', sassPath: './bower_components/bootstrap/scss'};
+
+gulp.task('bower', function(){
+	return bower()
+		.pipe(gulp.dest(config.bowerDir))
+});
+
+gulp.task('awesomeFonts', function() {
+	return gulp.src(config.bowerDir + '/components-font-awesome/fonts/**.*')
+		.pipe(gulp.dest('./public/css/fonts'));
+});
+
+gulp.task('bootstrapCSS', function() {
+	return gulp.src(config.sassPath + '/*.scss')
+		.pipe(plumber())
+		.pipe(cssSass({
+				outputStyle: 'expanded',
+				loadPath: [
+					config.bowerDir + '/bootstrap/scss/',
+					config.bowerDir + '/components-font-awesome/scss'
+					//'./resources/sass',
+					]
+				}).on("error", notify.onError(function (error){
+					return "Error: " + error.message;
+				})
+		))
+		.pipe(sassLint({
+				options: {
+					configFile:'./bower_components/bootstrap/scss/.sass-lint.yml',
+					formatter :'stylish', 'merge-default-rules': false
+				},
+				files: {ignore: '**/*.scss'},
+				rules: { 'no-ids': 1, 'no-mergeable-selectors': 0}
+		}))
+		.pipe(sassLint.format())
+		.pipe(sassLint.failOnError())
+		.pipe(autoprefixer({
+			browsers: ['last 2 version','safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+			cascade: false
+		}))
+		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
+		.pipe(gulp.dest('./public/css/bootstrap/'));
+});
+
+gulp.task('bootstrapStyle', ['bower', 'awesomeFonts', 'bootstrapCSS']);
+gulp.task('bootstrapWatch', function() {
+	gulp.watch(config.sassPath + '/**/*.scss', ['css']);
+});
+
+/** ---------------------------------------------------
  *  Build, Watch
  *  ---------------------------------------------------
  */
 gulp.task('build-clean', function() {
 	// Return the Promise from del()
 	// Return is the key here, to make sure asynchronous tasks are done!
-	return del(['./public/js/*.js', './public/css/*.css','!public/assets/goat.png']).then(paths => { 
+	return del(['./public/js/*.js', './public/css/**/*.css','!public/assets/goat.png']).then(paths => { 
 		console.log('Deleted files and folders:\n',paths.join('\n')); 
 	});
 });
