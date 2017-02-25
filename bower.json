@@ -1,16 +1,17 @@
 {
   "name": "mej1536",
-  "description": "git bower setting",
+  "description": "mej1536.github.io",
   "main": "index.js",
   "authors": [
     "mej1536@gmail.com"
   ],
   "license": "ISC",
   "keywords": [
-    "test",
-    "set"
+    "bower-setting",
+    "gulp bootstrap test"
   ],
-  "homepage": "mej1536.github.io",
+  "homepage": "https://github.com/mej1536/mej1536.github.io",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -20,12 +21,10 @@
   ],
   "devDependencies": {
     "bootstrap": "v4.0.0-alpha.6",
-    "jquery": "^3.1.1",
-    "jquery-1.9.1.min": "https://code.jquery.com/jquery-1.9.1.min.js",
-    "jquery-1.12.4.min": "https://code.jquery.com/jquery-1.12.4.min.js",
-    "jquery-2.2.4.min": "https://code.jquery.com/jquery-2.2.4.min.js"
-  },
-  "dependencies": {
-    "components-font-awesome": "^4.7.0"
+    "jquery-migrate-3.0.0": "https://code.jquery.com/jquery-migrate-3.0.0.js",
+    "jquery-migrate-1.4.1": "https://code.jquery.com/jquery-migrate-1.4.1.js",
+    "components-font-awesome": "^4.7.0",
+    "jquery-2.2.4": "https://code.jquery.com/jquery-2.2.4.js",
+    "jquery-1.12.4": "https://code.jquery.com/jquery-1.12.4.js"
   }
 }

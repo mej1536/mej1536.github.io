@@ -217,10 +217,11 @@ gulp.task('bootstrapCSS', function() {
 		.pipe(gulp.dest('./public/css/bootstrap/'));
 });
 
-gulp.task('bootstrapStyle', ['bower', 'awesomeFonts', 'bootstrapCSS', 'bootstrapWatch']);
 gulp.task('bootstrapWatch', function() {
 	gulp.watch(config.sassPath + '/**/*.scss', ['bootstrapCSS']);
 });
+gulp.task('bootstrapDefault', ['bower', 'awesomeFonts', 'bootstrapCSS', 'bootstrapWatch']);
+
 
 /** ---------------------------------------------------
  *  Build, Watch
