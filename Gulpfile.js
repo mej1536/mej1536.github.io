@@ -34,15 +34,6 @@ var gulp	= require('gulp'),
 ;
 
 /** ---------------------------------------------------
- *  Update Modul
- *  ---------------------------------------------------
- */
-gulp.task('update-modul', function() {
-	return gulp.src('package.json')
-		.pipe(upmodul('latest', 'false')); //update all modules latest version.
-});
-
-/** ---------------------------------------------------
  *  NodeJs Error solved
  *  Error Message>>
  *  warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
@@ -50,6 +41,15 @@ gulp.task('update-modul', function() {
  */
 var events = require('events');
 events.EventEmitter.defaultMaxListeners = 100;
+
+/** ---------------------------------------------------
+ *  Update Modul
+ *  ---------------------------------------------------
+ */
+gulp.task('update-modul', function() {
+	return gulp.src('package.json')
+		.pipe(upmodul('latest', 'false')); //update all modules latest version.
+});
 
 /** ---------------------------------------------------
  *  Bootstrap Copying Files
@@ -81,6 +81,43 @@ gulp.task('awesomeFonts', function(){
 });
 
 gulp.task('BootstrapFiles', ['bootstrapCopyingFiles','awesomeFonts']);
+
+/** ---------------------------------------------------
+ *  Bootstrap CSS
+ *  ---------------------------------------------------
+ */
+var srcBTS = { scssSRC:'./_workingStage/bootstrap/scss', jsSRC:'./_workingStage/bootstrap/js', fontSRC:'./_workingStage/bootstrap/fonts'};
+
+gulp.task('bootstrapCSS', function() {
+	return gulp.src('./_workingStage/bootstrap/scss/**/*.scss')
+		.pipe(plumber())
+		.pipe(cssSass({
+				outputStyle: 'expanded',
+				loadPath: [srcBTS.scssSRC, srcBTS.fontSRC+'/scss']
+			})
+			.on("error", notify.onError(function (error){
+					return "Error: " + error.message;
+			})
+		))
+		.pipe(sassLint({
+				options: {
+					configFile:'./_workingStage/bootstrap/scss/.sass-lint.yml',
+					formatter :'stylish', 'merge-default-rules': false
+				},
+				files: {ignore: '**/*.scss'},
+				rules: {'no-ids': 1, 'no-mergeable-selectors': 0}
+		}))
+		.pipe(sassLint.format())
+		.pipe(sassLint.failOnError())
+		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
+		.pipe(gulp.dest('./public/css/lib/'));
+});
+
+// 단독사용시..
+//gulp.task('bootstrapWatch', function() {
+//	gulp.watch(srcBTS.scssSRC + '/**/*.scss', ['bootstrapCSS']);
+//});
+//gulp.task('bootstrapRun', ['bootstrapCSS', 'bootstrapWatch']);
 
 /** ---------------------------------------------------
  *  Copy, Changed, Clean
@@ -159,42 +196,6 @@ gulp.task('styleSASS',function(){
 			})
 		);
 });
-
-/** ---------------------------------------------------
- *  Bootstrap CSS
- *  ---------------------------------------------------
- */
-var srcBTS = { scssSRC:'./_workingStage/bootstrap/scss', jsSRC:'./_workingStage/bootstrap/js', fontSRC:'./_workingStage/bootstrap/fonts'};
-
-gulp.task('bootstrapCSS', function() {
-	return gulp.src('./_workingStage/bootstrap/scss/**/*.scss')
-		.pipe(plumber())
-		.pipe(cssSass({
-				outputStyle: 'expanded',
-				loadPath: [srcBTS.scssSRC, srcBTS.fontSRC+'/scss']
-			})
-			.on("error", notify.onError(function (error){
-					return "Error: " + error.message;
-			})
-		))
-		.pipe(sassLint({
-				options: {
-					configFile:'./_workingStage/bootstrap/scss/.sass-lint.yml',
-					formatter :'stylish', 'merge-default-rules': false
-				},
-				files: {ignore: '**/*.scss'},
-				rules: {'no-ids': 1, 'no-mergeable-selectors': 0}
-		}))
-		.pipe(sassLint.format())
-		.pipe(sassLint.failOnError())
-		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
-		.pipe(gulp.dest('./public/css/lib/'));
-});
-
-gulp.task('bootstrapWatch', function() {
-	gulp.watch(srcBTS.scssSRC + '/**/*.scss', ['bootstrapCSS']);
-});
-gulp.task('bootstrapRun', ['bootstrapCSS', 'bootstrapWatch']);
 
 /** ---------------------------------------------------
  *  JavaScript
