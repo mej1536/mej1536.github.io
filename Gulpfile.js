@@ -3,7 +3,7 @@
  * 작업폴더  : ./_workingStage
  * 최종산출물: ./public
  * ------------------------------------------------
- * 최종수정일: 2017.02.18
+ * 최종수정일: 2017.03.04
  * ------------------------------------------------
  */
 'use strict';
@@ -230,7 +230,7 @@ gulp.task('bootstrapDefault', ['bower', 'awesomeFonts', 'bootstrapCSS', 'bootstr
 gulp.task('build-clean', function() {
 	// Return the Promise from del()
 	// Return is the key here, to make sure asynchronous tasks are done!
-	return del(['./public/js/*.js', './public/css/**/*.css','!public/assets/goat.png']).then(paths => { 
+	return del(['./public/js/**/', './public/css/**/','!public/assets/goat.png']).then(paths => { 
 		console.log('Deleted files and folders:\n',paths.join('\n')); 
 	});
 });
