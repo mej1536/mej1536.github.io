@@ -23,10 +23,14 @@ var gulp	= require('gulp'),
     jshint  	= require('gulp-jshint'),
     htmlhint 	= require('gulp-htmlhint'),
     del     	= require('del'),
+    es      	= require('event-stream'),
     runSequence = require('run-sequence'),
     gcallback	= require('gulp-callback'),
     htmlhintReporter  = require('gulp-htmlhint-html-reporter'),
-    jshintXMLReporter = require('gulp-jshint-xml-file-reporter')
+    jshintXMLReporter = require('gulp-jshint-xml-file-reporter'),
+    sassLint	= require('gulp-sass-lint'),
+    gutil   	= require('gulp-util'),
+    notify  	= require('gulp-notify')
 ;
 
 /** ---------------------------------------------------
@@ -48,22 +52,49 @@ var events = require('events');
 events.EventEmitter.defaultMaxListeners = 100;
 
 /** ---------------------------------------------------
- *  HTML
+ *  Bootstrap Copying Files
  *  ---------------------------------------------------
  */
-var _htmlSRC  = './public/**/*.{html,jsp}';
-gulp.task('htmlHint',function(){
-	return gulp.src(_htmlSRC)
-		.pipe(htmlhint('.htmlhintrc'))
-		.pipe(htmlhint.reporter(htmlhintReporter, {
-			 createMissingFolders : 'false'
-		}));
+var config = { bowerDir: './bower_components', scssPath: './bower_components/bootstrap/scss', jsPath: './bower_components/bootstrap/js'};
+
+gulp.task('bootstrapCopyingFiles', function() {
+	return es.merge(
+		/* bootstrap/scss/.scss-lint.yml 
+		 * 경로수정해야 하므로, 수동복사
+		 */
+		gulp.src(config.bowerDir+'/components-font-awesome/scss/**.*').pipe(gulp.dest('./_workingStage/bootstrap/fonts/scss/')),
+		gulp.src(config.scssPath+'/**/**.*').pipe(gulp.dest('./_workingStage/bootstrap/scss')),
+		gulp.src(config.jsPath+'/**/**.js').pipe(gulp.dest('./_workingStage/bootstrap/js'))
+	);
 });
 
+gulp.task('awesomeFonts', function(){
+	var fontsDEST1 = 
+		gulp.src(config.bowerDir + '/components-font-awesome/fonts/**.*')
+			.pipe(gulp.dest('./_workingStage/bootstrap/fonts'));
+	
+	var fontsDEST2 = 
+		gulp.src('./_workingStage/bootstrap/fonts/**.*')
+			.pipe(gulp.dest('./public/fonts/'));
+	
+	return merge(fontsDEST1, fontsDEST2);
+});
+
+gulp.task('BootstrapFiles', ['bootstrapCopyingFiles','awesomeFonts']);
+
 /** ---------------------------------------------------
- *   Changed, Copy
+ *  Copy, Changed, Clean
  *  ---------------------------------------------------
  */
+var originSRC  = './public/**/*.*';
+var copiedDEST = './build';
+
+gulp.task('changedAll', function(){
+	return gulp.src(originSRC)
+		.pipe(changed(copiedDEST)) // changed since the last time it was run
+		.pipe(gulp.dest(copiedDEST));
+});
+
 gulp.task('copyJS', function() {
 	return gulp.src(['./_workingStage/js/lib/*.js'])
 		.pipe(copy())
@@ -76,12 +107,31 @@ gulp.task('copyCSS', function() {
 		.pipe(gulp.dest('./public/css/'));
 });
 
-var originSRC  = './public/**/*.*';
-var copiedDEST = './build';
-gulp.task('changedAll', function(){
-	return gulp.src(originSRC)
-		.pipe(changed(copiedDEST)) // changed since the last time it was run
-		.pipe(gulp.dest(copiedDEST));
+gulp.task('cleanDest', function() {
+	// Return the Promise from del()
+	// Return is the key here, to make sure asynchronous tasks are done!
+	return del(['./public/js/**/', './public/css/**/','!public/assets/goat.png'])
+			.then( paths => {console.log('Deleted files and folders:\n',paths.join('\n'));} );
+});
+
+gulp.task('build-clean', function(done) {
+	runSequence('cleanDest',['copyJS','copyCSS'], function(){
+		console.log('----- Build-Clean Finished -----');
+		done();
+	});
+});
+
+/** ---------------------------------------------------
+ *  HTML
+ *  ---------------------------------------------------
+ */
+var _htmlSRC  = './public/**/*.{html,jsp}';
+gulp.task('htmlHint',function(){
+	return gulp.src(_htmlSRC)
+		.pipe(htmlhint('.htmlhintrc'))
+		.pipe(htmlhint.reporter(htmlhintReporter, {
+			 createMissingFolders : 'false'
+		}));
 });
 
 /** ---------------------------------------------------
@@ -105,10 +155,46 @@ gulp.task('styleSASS',function(){
 		.pipe(replace(';}}',';}\r\n}'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function(){
-				console.log('** task done : styleSASS');
+				console.log('----- styleSASS Finished -----');
 			})
 		);
 });
+
+/** ---------------------------------------------------
+ *  Bootstrap CSS
+ *  ---------------------------------------------------
+ */
+var srcBTS = { scssSRC:'./_workingStage/bootstrap/scss', jsSRC:'./_workingStage/bootstrap/js', fontSRC:'./_workingStage/bootstrap/fonts'};
+
+gulp.task('bootstrapCSS', function() {
+	return gulp.src('./_workingStage/bootstrap/scss/**/*.scss')
+		.pipe(plumber())
+		.pipe(cssSass({
+				outputStyle: 'expanded',
+				loadPath: [srcBTS.scssSRC, srcBTS.fontSRC+'/scss']
+			})
+			.on("error", notify.onError(function (error){
+					return "Error: " + error.message;
+			})
+		))
+		.pipe(sassLint({
+				options: {
+					configFile:'./_workingStage/bootstrap/scss/.sass-lint.yml',
+					formatter :'stylish', 'merge-default-rules': false
+				},
+				files: {ignore: '**/*.scss'},
+				rules: {'no-ids': 1, 'no-mergeable-selectors': 0}
+		}))
+		.pipe(sassLint.format())
+		.pipe(sassLint.failOnError())
+		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
+		.pipe(gulp.dest('./public/css/lib/'));
+});
+
+gulp.task('bootstrapWatch', function() {
+	gulp.watch(srcBTS.scssSRC + '/**/*.scss', ['bootstrapCSS']);
+});
+gulp.task('bootstrapRun', ['bootstrapCSS', 'bootstrapWatch']);
 
 /** ---------------------------------------------------
  *  JavaScript
@@ -165,77 +251,11 @@ gulp.task('jsHINT',function(){
 });
 
 /** ---------------------------------------------------
- *  Bootstrap CSS
- *  ---------------------------------------------------
- */
-var sassLint = require('gulp-sass-lint'),
-    bower = require('gulp-bower'),
-    gutil = require('gulp-util'),
-    notify = require('gulp-notify')
-;
-var config = { bowerDir: './bower_components', sassPath: './bower_components/bootstrap/scss'};
-
-gulp.task('bower', function(){
-	return bower()
-		.pipe(gulp.dest(config.bowerDir))
-});
-
-gulp.task('awesomeFonts', function() {
-	return gulp.src(config.bowerDir + '/components-font-awesome/fonts/**.*')
-		.pipe(gulp.dest('./public/css/fonts'));
-});
-
-gulp.task('bootstrapCSS', function() {
-	return gulp.src(config.sassPath + '/*.scss')
-		.pipe(plumber())
-		.pipe(cssSass({
-				outputStyle: 'expanded',
-				loadPath: [
-					config.bowerDir + '/bootstrap/scss/',
-					config.bowerDir + '/components-font-awesome/scss'
-					//'./resources/sass',
-					]
-				}).on("error", notify.onError(function (error){
-					return "Error: " + error.message;
-				})
-		))
-		.pipe(sassLint({
-				options: {
-					configFile:'./bower_components/bootstrap/scss/.sass-lint.yml',
-					formatter :'stylish', 'merge-default-rules': false
-				},
-				files: {ignore: '**/*.scss'},
-				rules: { 'no-ids': 1, 'no-mergeable-selectors': 0}
-		}))
-		.pipe(sassLint.format())
-		.pipe(sassLint.failOnError())
-		.pipe(autoprefixer({
-			browsers: ['last 2 version','safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-			cascade: false
-		}))
-		.pipe(cleanCSS( {format:'keep-breaks'},{compatibility:'ie7'},{level:{ 1:{all:false}, 2:{all:false}}} ))
-		.pipe(gulp.dest('./public/css/bootstrap/'));
-});
-
-gulp.task('bootstrapWatch', function() {
-	gulp.watch(config.sassPath + '/**/*.scss', ['bootstrapCSS']);
-});
-gulp.task('bootstrapDefault', ['bower', 'awesomeFonts', 'bootstrapCSS', 'bootstrapWatch']);
-
-
-/** ---------------------------------------------------
  *  Build, Watch
  *  ---------------------------------------------------
  */
-gulp.task('build-clean', function() {
-	// Return the Promise from del()
-	// Return is the key here, to make sure asynchronous tasks are done!
-	return del(['./public/js/**/', './public/css/**/','!public/assets/goat.png']).then(paths => { 
-		console.log('Deleted files and folders:\n',paths.join('\n')); 
-	});
-});
 gulp.task('build', function(done) {
-	runSequence('build-clean', ['styleSASS', 'JSConcat_ONE','JSConcat_TWO'],'htmlHint',['copyJS','copyCSS'], function(){
+	runSequence('build-clean', ['styleSASS', 'JSConcat_ONE','JSConcat_TWO'],'htmlHint', function(){
 		console.log('** task build : Build Finished!!');
 		done();
 	});
@@ -250,10 +270,11 @@ gulp.task('watch', function(){
 	
 	//모듈 업데이트 할때만 사용하기로..
 	//gulp.start('update-modul');
+	gulp.watch(['./_workingStage/bootstrap/**/*.scss'],['bootstrapCSS']);
 	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
 	gulp.watch(['./_workingStage/js/*.js'],['JSConcat_ONE','JSConcat_TWO','jsHINT']);
 	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
 });
 
-gulp.task('default', ['styleSASS','JSConcat_ONE','JSConcat_TWO','jsHINT','htmlHint','watch'], function(){
+gulp.task('default', ['styleSASS','bootstrapCSS','JSConcat_ONE','JSConcat_TWO','jsHINT','htmlHint','watch'], function(){
 });
