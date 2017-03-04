@@ -270,7 +270,7 @@ gulp.task('watch', function(){
 	}
 	
 	//모듈 업데이트 할때만 사용하기로..
-	gulp.start('update-modul');
+	//gulp.start('update-modul');
 	gulp.watch(['./_workingStage/bootstrap/**/*.scss'],['bootstrapCSS']);
 	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
 	gulp.watch(['./_workingStage/js/*.js'],['JSConcat_ONE','JSConcat_TWO','jsHINT']);

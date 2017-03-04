@@ -4,3 +4,15 @@
 .clearfix {
   @include clearfix();
 }
+
+//클리어픽스
+@mixin clearfix {
+	&:before, 
+	&:after { 
+		display: block; 
+		content:"";
+	}
+	&:after {
+		clear: both;
+	}
+}

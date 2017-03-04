@@ -7,26 +7,10 @@
  */
 
 
+
 //기본설정
 @mixin defaultSetZero {border:0;margin:0; padding:0;}
 @mixin defaultSetFont {@include fontSysDesktop;}
-
-//클리어픽스
-@mixin clearfix {
-	&:before, 
-	&:after { 
-		display: block; 
-		content:"";
-	}
-	&:after {
-		clear: both;
-	}
-}
-
-
-
-
-
 
 
 

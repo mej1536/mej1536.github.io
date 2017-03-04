@@ -5,41 +5,117 @@
  * File Name   : _variables.scss
  * ------------------------------------------------------------
  */
- 
- 
-$widthMax:1080px;
+
+/* 참고용
+// Start with assigning color names to specific hex values.
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  #5cb85c !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
+// Create grayscale
+$gray-dark:                 #292b2c !default;
+$gray:                      #464a4c !default;
+$gray-light:                #636c72 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             $blue !default;
+$brand-success:             $green !default;
+$brand-info:                $teal !default;
+$brand-warning:             $orange !default;
+$brand-danger:              $red !default;
+$brand-inverse:             $gray-dark !default;
+ */
+
+
+/* --------------------------------------------
+ * Color : text, background-color
+ * -------------------------------------------- */
+
+// 기본
+$colorTyText-Basic: #555;
+
+// 강조색
+$colorTyText-major:;
+$colorTyText-Sub:;
+
+// 회색
+$colorTyGray-light:;
+$colorTyGray-Silver:;
+$colorTyGray-Dark:;
+$colorTyGray-Black:;
+
+// 파랑색: 흐린,밝은,맑은,어두운
+$colorTyBlue-cloudy:;
+$colorTyBlue-bright:;
+$colorTyBlue-clear:;
+$colorTyBlue-Dark:;
+
+// 바탕색
+$colorTyBG-lightGray:;
+$colorTyBG-cloudyGray: rgba(246,246,246,1);
+$colorTyBG-DarkGray:;
+
+// 링크
+$link-color: $colorTyText-Basic !default;
+$link-decoration:  none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+
+
+/* ------------------------------ 
+ * Fonts
+ * ------------------------------ */
+
+$baseFont-PC : 'Nanum Gothic','나눔고딕','맑은 고딕','Malgun Gothic','돋움','Dotum','Sans-Serif';
+$baseFont-MOB : 'Nanum Gothic','나눔고딕','돋움','Dotum','Sans-Serif';
+
+$fontSize-xsmall:11px ;
+$fontSize-small:13px;
+$fontSize-medium:14px;
+$fontSize-large:16px;
+$fontSize-big:20px;
+
+$fontSize-h1:24px;
+$fontSize-h2:18px;
+$fontSize-h3:16px;
+$fontSize-h4:14px;
+$fontSize-h5:12px;
+$fontSize-h6:12px;
+
+
+/* ------------------------------ 
+ * Button
+ * ------------------------------ */
+
+
+/* ------------------------------ 
+ * List
+ * ------------------------------ */
+
+
+/* ------------------------------ 
+ * box
+ * ------------------------------ */
+
+
+/* ------------------------------ 
+ * Table
+ * ------------------------------ */
 
 
 
 /* ------------------------------ 
- * fonts,color
+ * Form
  * ------------------------------ */
 
-$fontSize12 : 12px;
-$fontSize13 : 13px;
-$fontSize14 : 14px;
-
-$colorBasic : #656565;
-$colorPoint : #ff3600;
-$colorPointSb : #3c44f2;
 
 
-/* ------------------------------ 
- * background
- * ------------------------------ */
- 
-/* variable : background */
-$bodyBG : rgba(246,246,246,1);
-
-$inputBG : #f5f5f5;
-
-/* variable : button */
-$btnfontXS : 11px;
-$btnfontS : 12px;
-$btnfontM : 14px;
-$btnfontL : 16px;
-
-
-
-/* variable : 서브 컨텐츠 */
-$bodySubBG :rgba(246,246,246,1);
