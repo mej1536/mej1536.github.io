@@ -163,7 +163,7 @@ gulp.task('build-clean', function(done) {
  *  ---------------------------------------------------
  */
 var _htmlSRC  = './public/**/*.{html,jsp}';
-gulp.task('htmlHint',function(){
+gulp.task('htmlHINT',function(){
 	return gulp.src(_htmlSRC)
 		.pipe(htmlhint('.htmlhintrc'))
 		.pipe(htmlhint.reporter(htmlhintReporter, {
@@ -256,7 +256,7 @@ gulp.task('jsHINT',function(){
  *  ---------------------------------------------------
  */
 gulp.task('build', function(done) {
-	runSequence('build-clean', ['styleSASS', 'JSConcat_ONE','JSConcat_TWO'],'htmlHint', function(){
+	runSequence('build-clean', ['styleSASS', 'JSConcat_ONE','JSConcat_TWO'],'htmlHINT', function(){
 		console.log('** task build : Build Finished!!');
 		done();
 	});
@@ -274,8 +274,8 @@ gulp.task('watch', function(){
 	gulp.watch(['./_workingStage/bootstrap/**/*.scss'],['bootstrapCSS']);
 	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
 	gulp.watch(['./_workingStage/js/*.js'],['JSConcat_ONE','JSConcat_TWO','jsHINT']);
-	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHint']);
+	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHINT']);
 });
 
-gulp.task('default', ['styleSASS','bootstrapCSS','JSConcat_ONE','JSConcat_TWO','jsHINT','htmlHint','watch'], function(){
+gulp.task('default', ['styleSASS','bootstrapCSS','JSConcat_ONE','JSConcat_TWO','jsHINT','htmlHINT','watch'], function(){
 });
