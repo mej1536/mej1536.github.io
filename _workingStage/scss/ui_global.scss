@@ -10,5 +10,7 @@
 /* 초기화 */
 @import '_module/base-reset';
 
-/* 공통사용 제어용 class */
+/* 공통사용 */
+@import '_module/base-skipnavi'
 @import '_module/base-offset';
+@import '_module/base-print'
