@@ -6,18 +6,8 @@
  * ------------------------------------------------------------
  */
 
-/* 기본설정 */
-@import '_mixins/mBasic';
-
-
-/* 레이아웃 */
+@import '_mixins/mBase';
+@import '_mixins/mBtns';
 @import '_mixins/mLayout';
 @import '_mixins/mLayer';
-
-
-/* 버튼 */
-@import '_mixins/_mButton';
-
-
-/* 폼 */
-@import '_mixins/_mFormControl';
+@import '_mixins/mForm';

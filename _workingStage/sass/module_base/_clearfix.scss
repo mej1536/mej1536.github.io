@@ -1,12 +1,6 @@
 @charset "UTF-8";
-
-/*! clear */
-.clearfix {
-  @include clearfix();
-}
-
 //클리어픽스
-@mixin clearfix {
+@mixin clearfix() {
 	&:before, 
 	&:after { 
 		display: block; 
@@ -15,4 +9,8 @@
 	&:after {
 		clear: both;
 	}
+}
+/*! clear */
+.clearfix {
+  @include clearfix();
 }

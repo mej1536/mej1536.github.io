@@ -113,7 +113,7 @@ gulp.task('bootstrapCSS', function() {
 		.pipe(gulp.dest('./public/css/lib/'));
 });
 
-// 단독사용시..
+// 부트스트랩 단독으로 사용 시...
 //gulp.task('bootstrapWatch', function() {
 //	gulp.watch(srcBTS.scssSRC + '/**/*.scss', ['bootstrapCSS']);
 //});
