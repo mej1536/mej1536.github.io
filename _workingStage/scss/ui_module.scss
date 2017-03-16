@@ -9,28 +9,28 @@
 
 
 /* 폰트,헤딩,문구 */
-@import 'module/element-typography';
+@import '_module/element-typography';
 
 
 /* 버튼,아이콘 */
-@import 'module/element-buttons';
-@import 'module/element-icons';
-@import 'module/element-tooltips';
+@import '_module/element-buttons';
+@import '_module/element-icons';
+@import '_module/element-tooltips';
 
 
 /* 블릿-목록 */
-@import 'module/element-bullets';
-@import 'module/element-lists';
+@import '_module/element-bullets';
+@import '_module/element-lists';
 
 
 /* 테이블,페이징 */
-@import 'module/element-tables';
-@import 'module/element-pagination';
+@import '_module/element-tables';
+@import '_module/element-pagination';
 
 
 /* 박스모델(박스형태) */
-@import 'module/element-boxModel';
+@import '_module/element-boxModel';
 
 
 /* 폼요소 */
-@import 'module/element-formControls';
+@import '_module/element-formControls';

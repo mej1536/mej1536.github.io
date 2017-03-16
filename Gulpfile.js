@@ -175,7 +175,7 @@ gulp.task('htmlHINT',function(){
  *  CSS
  *  ---------------------------------------------------
  */
-var _sassSRC  = './_workingStage/sass/**/*.scss';
+var _sassSRC  = './_workingStage/scss/**/*.scss';
 var _sassDEST = './public/css/';
 
 gulp.task('styleSASS',function(){
@@ -272,7 +272,7 @@ gulp.task('watch', function(){
 	//모듈 업데이트 할때만 사용하기로..
 	//gulp.start('update-modul');
 	gulp.watch(['./_workingStage/bootstrap/**/*.scss'],['bootstrapCSS']);
-	gulp.watch(['./_workingStage/sass/**/*.scss'],['styleSASS']);
+	gulp.watch(['./_workingStage/scss/**/*.scss'],['styleSASS']);
 	gulp.watch(['./_workingStage/js/*.js'],['JSConcat_ONE','JSConcat_TWO','jsHINT']);
 	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHINT']);
 });

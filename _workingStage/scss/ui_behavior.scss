@@ -8,19 +8,19 @@
 @import 'mixins';
 
 /* ShowHide */
-@import 'module/control-accordion';
-@import 'module/control-toggle';
-@import 'module/control-tab';
+@import '_module/control-accordion';
+@import '_module/control-toggle';
+@import '_module/control-tab';
 
 
 /* 애니메이션 */
-@import 'module/control-animations';
+@import '_module/control-animations';
 
 
 /* 슬라이더 */
-@import 'module/control-slider';
-@import 'module/control-carousel';
+@import '_module/control-slider';
+@import '_module/control-carousel';
 
 
 /* 영상삽입 */
-@import 'module/control-youtube';
+@import '_module/control-youtube';
