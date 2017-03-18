@@ -1,6 +1,8 @@
 @charset 'UTF-8';
 .popLayer{border:1px solid red;}
-div{border:1px solid red;}
+#wrap{border:1px solid red;}
+#container{width:1000px;}
+#footer{width:1000px;}
 div{border:1px solid red;}
 div{border:1px solid red;}
 div{border:1px solid red;}

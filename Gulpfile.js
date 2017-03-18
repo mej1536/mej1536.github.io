@@ -273,6 +273,7 @@ gulp.task('watch', function(){
 	//gulp.start('update-modul');
 	gulp.watch(['./_workingStage/bootstrap/**/*.scss'],['bootstrapCSS']);
 	gulp.watch(['./_workingStage/scss/**/*.scss'],['styleSASS']);
+	gulp.watch(['./_workingStage/css/**/*.css'],['copyCSS']);
 	gulp.watch(['./_workingStage/js/*.js'],['JSConcat_ONE','JSConcat_TWO','jsHINT']);
 	gulp.watch(['./public/**/*.{html,jsp}'],['htmlHINT']);
 });
