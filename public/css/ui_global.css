@@ -39,16 +39,15 @@ blockquote:after,blockquote:before,q:after,q:before{content:'';content:none;}
 ol,ul{list-style:none;}
 em,i{font-style:normal;}
 mark{color:#000000;background:#ffff00;}
-div{border:1px solid red;}
-/*! clear */
-.clearfix:after,.clearfix:before{display:block;content:'';}
-.clearfix:after{clear:both;}
 #skipNavi{position:absolute;z-index:10000;width:100%;text-align:center;}
 #skipNavi a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
 #skipNavi a:active,#skipNavi a:focus{width:auto;height:auto;padding:5px;background:#0075b1;}
 #skipNaviReturn{position:relative;}
 #skipNaviReturn a{display:block;overflow:hidden;width:1px;height:1px;margin-bottom:-1px;text-align:center;white-space:nowrap;color:#ffffff;}
 #skipNaviReturn a:active,#skipNaviReturn a:focus{width:auto;height:auto;margin-bottom:10px;padding:5px;background:#0075b1;}
+/*! clear */
+.clearfix:after,.clearfix:before{display:block;content:'';}
+.clearfix:after{clear:both;}
 .tblBox{border:1px solid #0000ff;}
 @media print{
   body{color:#000000;}

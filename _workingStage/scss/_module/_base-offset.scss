@@ -17,24 +17,4 @@
 }
 
 
-#skipNavi{position:absolute; z-index:10000; width:100%; text-align:center;
-	a {display:block; overflow:hidden; width:1px; height:1px; margin-bottom:-1px; text-align:center; color:#FFF; white-space:nowrap;
-		&:focus,
-		&:active {width:auto; height:auto; padding:5px; background:#0075b1;}
-	}
-}
-#skipNaviReturn{position:relative;
-	a {display:block; overflow:hidden; width:1px; height:1px; margin-bottom:-1px; text-align:center; color:#FFF; white-space:nowrap;
-		&:focus,
-		&:active {width:auto; height:auto; padding:5px; margin-bottom:10px; background:#0075b1;}
-	}
-}
-
-
-@mixin floatL{float:left;}
-@mixin floatR{float:right;}
-@mixin floatN{float:none !important;}
-@mixin floatBox {overflow:hiddne;}
-@mixin inlineB{display:inline-block !important;}
-
 .tblBox{border:1px solid blue}

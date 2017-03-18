@@ -20,6 +20,12 @@
 
 
 
+@mixin floatL{float:left;}
+@mixin floatR{float:right;}
+@mixin floatN{float:none !important;}
+@mixin floatBox {overflow:hidden;}
+@mixin inlineB{display:inline-block !important;}
+
 //폰트(PC)
 @mixin fonts { font-family:'Nanum Gothic','나눔고딕','돋움','Dotum','맑은 고딕','Malgun Gothic',Sans-Serif; font-size:12px; color:#555;}
 
