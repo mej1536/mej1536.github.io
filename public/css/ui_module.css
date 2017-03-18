@@ -9,4 +9,5 @@ div{border:1px solid red;}
 div{border:1px solid red;}
 div{border:1px solid red;}
 div{border:1px solid red;}
-div{border:1px solid red;}
+input::-webkit-input-placeholder{color:#6f6f6f;}
+textarea::-webkit-input-placeholder{color:#6f6f6f;}

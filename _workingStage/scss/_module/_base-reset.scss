@@ -91,7 +91,7 @@ button:-moz-focusring,
 
 
 /** 기본설정 */
-body {background:#fff;}
+body {background:#fff;@include defaultSetFont;}
 table{table-layout:fixed;border-spacing:0;border-collapse:collapse;}
 blockquote,q {quotes:none;}
 blockquote:after, blockquote:before, q:after, q:before{content:''; content:none;}
