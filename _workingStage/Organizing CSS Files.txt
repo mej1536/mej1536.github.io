@@ -9,7 +9,7 @@ maintenance
 
 
 base.css
-public.css 일반의 
+public.css
 common.css
 global.css
 layout.css
@@ -17,16 +17,13 @@ theme.css
 module.css
 template.css
 
-
-function 기능, 작동하다
-
+----
+function
+----
 ui-
-
-
-partials 부분적인, 불완전한
-
-module 모듈, 조립 부품
-
+----
+partials
+module
 ----------------
 W3.CSS Examples 보기,사례
 ----------------
