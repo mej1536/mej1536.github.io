@@ -43,6 +43,7 @@ audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
  *  MIT License
  *  github.com/necolas/normalize.css 
  */
+/*! normalize.css */
 a {background-color:transparent; -webkit-text-decoration-skip:objects;}
 a:active, a:hover {outline-width:0;}
 abbr[title]{border-bottom:none; text-decoration:underline; text-decoration:underline dotted;}
@@ -88,9 +89,7 @@ button:-moz-focusring,
 ::-webkit-file-upload-button {-webkit-appearance: button; font: inherit;}
 
 
-
-
-/** 기본설정 */
+/*! 기본설정 */
 body {background:#fff;@include defaultSetFont;}
 table{table-layout:fixed;border-spacing:0;border-collapse:collapse;}
 blockquote,q {quotes:none;}

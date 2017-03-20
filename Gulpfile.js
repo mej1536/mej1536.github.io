@@ -188,7 +188,7 @@ gulp.task('styleSASS',function(){
 			cascade: false
 		}))
 		.pipe(cssComb('csscomb.json'))
-		.pipe(replace('/*! -----','\r\n/*! -----'))
+		.pipe(replace('/*!','\r\n/*!'))
 		.pipe(replace(';}}',';}\r\n}'))
 		.pipe(gulp.dest(_sassDEST))
 		.pipe(gcallback(function(){
