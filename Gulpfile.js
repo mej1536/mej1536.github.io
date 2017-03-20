@@ -209,8 +209,10 @@ var JShintOP = { globals: {jQuery:true, console:true, module:true, document:true
 gulp.task('JSConcat_ONE',function(){
 	return gulp.src(_jsSRC)
 		.pipe(jshint(JShintOP))
-		.pipe(jshint.reporter(jshintXMLReporter))
+		.pipe(jshint.reporter(jshintXMLReporter))		
 		.pipe(concat('public.js'))
+		.pipe(replace('\n/**','\r\n/**'))
+		.pipe(replace('\n','\r\n'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
 			console.log('** task done : JSConcat_ONE');
@@ -223,6 +225,8 @@ gulp.task('JSConcat_TWO',function(){
 	//기본공통
 	var streamJsSRC1 = gulp.src(['./_workingStage/js/file1.js', './_workingStage/js/file2.js','./_workingStage/js/module/tooltip.js'])
 		.pipe(concat('common.js'))
+		.pipe(replace('\n/**','\r\n/**'))
+		.pipe(replace('\n','\r\n'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
 			console.log('** task done : JSConcat_SRC1');
@@ -231,6 +235,8 @@ gulp.task('JSConcat_TWO',function(){
 	//모듈전용
 	var streamJsSRC2 = gulp.src(['./_workingStage/js/module/carousel.js', './_workingStage/js/module/popover.js'])
 		.pipe(concat('module.js'))
+		.pipe(replace('\n/**','\r\n/**'))
+		.pipe(replace('\n','\r\n'))
 		.pipe(gulp.dest(_jsDEST))
 		.pipe(gcallback(function(){
 			console.log('** task done : JSConcat_SRC2');
