@@ -1,0 +1,70 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+*.md	text
+*.java	text
+*.scala	text
+*.properties	text
+*.xml	text
+*.txt	text
+*.sh	text
+*.iml	text
+*.classpath	text
+*.project	text
+*.yml	text
+*.header	text
+*.properties	text
+*.prefs	text
+*.stg	text
+*.sh	text
+*.sed	text
+*.bat	text
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.class         binary
+*.jar           binary
+*.zip           binary
+
+
+
+
+*.cs     text eol=crlf diff=csharp
+*.java   text eol=crlf diff=java
+*.sql    text
+
+*.html   text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=4 diff=html
+*.css    text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=4
+*.scss   text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=4
+*.js     text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=2
+*.json   text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=2
+
+*.csproj text merge=union
+*.sln    text merge=union eol=crlf
+
+*.docx   diff=astextplain
+*.DOCX   diff=astextplain
+
+# absolute paths are ok, as are globs
+/**/postinst* text eol-lf
+
+# paths that don't start with / are treated relative to the .gitattributes folder
+relative/path/*.txt text eol-lf
+
+
+
+
+# Define text file attributes.
+# - Treat them as text.
+# - Ensure no CRLF line-endings, neither on checkout nor on checkin.
+# - Detect whitespace errors.
+#   - Exposed by default in 'git diff --color' on the CLI.
+#   - Validate with 'git diff --check'.
+#   - Deny applying with 'git apply --whitespace=error-all'.
+#   - Fix automatically with 'git apply --whitespace=fix'.
+
+# *.css     text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=2
+# *.html    text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=2 diff=html
+# *.js      text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=2
+# *.json    text eol=crlf whitespace=blank-at-eol,-blank-at-eof,-space-before-tab,tab-in-indent,tabwidth=2
+#..

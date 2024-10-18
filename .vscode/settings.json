@@ -1,0 +1,42 @@
+{
+	"workbench.colorCustomizations": {
+		"titleBar.activeBackground": "#382b72",
+		"titleBar.activeForeground": "#faeeff"
+	},
+
+	"files.trimTrailingWhitespace": true,
+	"editor.formatOnType": true,
+	"editor.formatOnSave": true,
+	"editor.indentSize": "tabSize",
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.useTabStops": true,
+	"editor.detectIndentation": true,
+	"editor.renderWhitespace": "all",
+	"editor.trimAutoWhitespace": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+
+	"html.format.extraLiners": "body, /html",
+	"html.format.maxPreserveNewLines": 2,
+	"html.format.preserveNewLines": true,
+
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "markdown"],
+	"prettier.useTabs": true,
+	"prettier.printWidth": 200,
+	"prettier.htmlWhitespaceSensitivity": "ignore",
+
+	"[html][css][scss]": {
+		"editor.tabSize": 4,
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"prettier.tabWidth": 4
+	},
+	"[javascript][typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"prettier.tabWidth": 2
+	}
+}
