@@ -1,0 +1,10 @@
+@mixin font-family {
+	font-family: Pretendard, Sora, Roboto, -apple-system, BlinkMacSystemFont, '맑은고딕','Malgun Gothic','돋움','Dotum','Segoe UI', sans-serif;
+}
+
+@mixin li_base {
+	list-style: inside none;
+}
+@mixin li_roman {
+	list-style: inside upper-roman; //circle, disc, square, lower-alpha ...
+}

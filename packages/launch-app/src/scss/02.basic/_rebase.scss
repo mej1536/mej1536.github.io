@@ -1,0 +1,14 @@
+@use '../01.abstracts/' as * ;
+
+/*! 기본설정 */
+* {box-sizing:border-box; -webkit-tap-highlight-color:rgba(0,0,0,0); backface-visibility: hidden;}
+*,*:after,*:before {-webkit-box-sizing: border-box;-moz-box-sizing: border-box; box-sizing: border-box;}
+::-webkit-input-placeholder {font-size:inherit;}
+::-moz-placeholder {font-size:inherit;opacity:1;}
+
+html, body {height: 100%; background: #fff;}
+html { @include font-family; font-size: 14px;}
+body { color: #424242; font-size: 1rem; }
+
+ul,ol,li {@include li_base;}
+a {text-decoration: none;}
