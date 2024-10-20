@@ -1,3 +1,7 @@
-@forward './01.abstracts/';
+@use "./01.abstracts/" as *;
+@use "../output.scss" as *;
 
-body {background-color: skyblue;}
+body {
+	background-color: skyblue;
+	background: url($svg-component_arrow_up);
+}
