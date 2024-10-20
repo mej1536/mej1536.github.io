@@ -1,17 +1,6 @@
 @use "./01.abstracts/" as *;
 // @use "../output.scss" as *;
 
-@function sassvg-component_arrow_up($fillcolor, $strokecolor, $extrastyles) {
-	@return "data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22#{$fillcolor}%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22#{$extrastyles}%22%3E%20%3Cg%20id%3D%22r%2Farrow-up%22%3E%20%3Cg%20id%3D%22arrow-up%22%3E%20%3Cpath%20id%3D%22Vector%22%20d%3D%22M12%206.66666L8%202.66666L4%206.66666%22%20stroke%3D%22#{$strokecolor}%22%20stroke-width%3D%221.5%22%20stroke-miterlimit%3D%2210%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20id%3D%22Vector_2%22%20d%3D%22M8.04688%2013.7799V2.77994%22%20stroke%3D%22#{$strokecolor}%22%20stroke-width%3D%221.5%22%20stroke-miterlimit%3D%2210%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E";
-}
-
 body {
 	background-color: skyblue;
-	// background: url($svg-component_arrow_up);
-
-	// @include svg-component_arrow_up(blue, red);
-
-	// background-image: url(svg-component_arrow_up(#ff0000, #00ff00));
-
-	background-image: url(sassvg-component_arrow_up(#ff0000, #00ff00, ""));
 }
