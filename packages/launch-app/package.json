@@ -4,10 +4,10 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"lint": "eslint .",
-		"preview": "vite preview"
+		"dev": "vite --open ./src",
+		"build": "vite build --outDir deploy",
+		"preview": "vite preview --outDir deploy --open ./deploy",
+		"lint": "eslint ."
 	},
 	"dependencies": {
 		"react": "^18.3.1",
@@ -19,13 +19,18 @@
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.2",
 		"autoprefixer": "^10.4.20",
+		"cheerio": "^1.0.0-rc.10",
 		"eslint": "^9.11.1",
 		"eslint-plugin-react": "^7.37.0",
 		"eslint-plugin-react-hooks": "^5.1.0-rc.0",
 		"eslint-plugin-react-refresh": "^0.4.12",
 		"globals": "^15.9.0",
+		"mini-svg-data-uri": "^1.4.4",
 		"sass": "^1.80.2",
-		"vite": "^5.4.8"
+		"svgo": "^3.3.2",
+		"vite": "^5.4.9",
+		"vite-plugin-cssvg": "^2.0.6",
+		"vite-plugin-svgr": "^4.2.0"
 	},
 	"browserslist": [
 		"edge >= 89",
