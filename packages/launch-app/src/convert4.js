@@ -4,7 +4,7 @@ import svgToDataUri from "mini-svg-data-uri";
 import getColors from "get-svg-colors";
 
 const svgFolder = "./src/svg-icons";
-const cssOutput = "./src/output.scss";
+const cssOutput = "./src/svgfunction.scss";
 
 fs.readdir(svgFolder, (err, files) => {
   if (err) throw err;
