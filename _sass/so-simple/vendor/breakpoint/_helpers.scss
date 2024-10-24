@@ -11,8 +11,6 @@
   //GPT코드추가
   @if type-of($value) != 'number' {
     @warn 'Expected $value to be a number, but got #{type-of($value)}.';
-
-    @debug breakpoint-get('base font size');
     @return null;
   }
 
@@ -21,6 +19,7 @@
   // Will convert relative EMs into root EMs.
   @if breakpoint-get('base font size') and type-of(breakpoint-get('base font size')) == 'number' and $value-unit == 'em' {
     $base-unit: unit(breakpoint-get('base font size'));
+    @debug breakpoint-get('base font size');
 
     @if $base-unit == 'px' or $base-unit == '%' or $base-unit == 'em' or $base-unit == 'pt' {
       @return base-conversion($value) / base-conversion(breakpoint-get('base font size')) * 1em;

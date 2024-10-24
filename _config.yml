@@ -75,6 +75,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-category-pages
 
 # Front Matter Defaults
 defaults:
@@ -88,13 +89,13 @@ defaults:
 
 # Site Author
 author:
-  name:
+  name: mej1536
   picture:
-  email:
+  email: mej1536@gmail.com
   twitter:
   links:
     - title:
-      url:
+      url: https://mej1536.github.io/
       icon:
 
 # Footer Links
