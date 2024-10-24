@@ -26,9 +26,12 @@ layout: default
           {{ content }}
         </div>
 
-        {% if page.share %}
+        <div style="border: 1px solid red;">
+          <strong>share sns 영역 - 버튼 일단 숨김</strong>
+        <!-- {% if page.share %}
           {% include social-share.html %}
-        {% endif %}
+        {% endif %} -->
+        </div>
 
         {% if site.disqus.shortname %}
           {% include disqus-comments.html %}

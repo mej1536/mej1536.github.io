@@ -27,10 +27,16 @@ read_time: # reading time estimates, e.g. true
 words_per_minute: # 200
 mathjax: # MathJax equations, e.g. true
 google_fonts:
-  - name: "Source Sans Pro"
-    weights: "400,400i,700,700i"
-  - name: "Lora"
-    weights: "400,400i,700,700i"
+  - name: "IBM Plex Sans KR"
+    weights: "400,500,700"
+  - name: "Hahmlet"
+    weights: "400,600,800"
+  - name: "Gothic A1"
+    weights: "400, 600"
+  - name: "Nanum Gothic"
+    weights: "400,700,800"
+  - name: "Gowun Batang"
+    weights: "400"
 google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
 disqus:
   shortname: # Disqus shortname, e.g. "my_disqus_shortname"
