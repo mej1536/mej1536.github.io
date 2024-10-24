@@ -3,14 +3,14 @@
 - title: Home
   url: /
 - title: Posts
-  url: /posts/
+  url: /routePosts/
 - title: Categories
-  url: /categories/
+  url: /routeCategories/
 - title: Tags
-  url: /tags/
-# - title: Recipes
-#   url: /recipes/
+  url: /routeTags/
 - title: Search
-  url: /search/
+  url: /routeSearch/
+# - title: Recipes
+#   url: /routeRecipes/
 # - title: External Page
 #   url: https://the-page.com/you-want-to-link-to.html

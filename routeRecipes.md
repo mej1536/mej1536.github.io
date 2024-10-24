@@ -1,7 +1,7 @@
 ---
 title: Recipes
 layout: collection
-permalink: /recipes/
+permalink: /routeRecipes/
 collection: recipes
 entries_layout: grid
 ---
