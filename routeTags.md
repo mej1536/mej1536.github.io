@@ -1,7 +1,7 @@
 ---
 title: Tag Archive
 layout: tags
-permalink: /routeTags.md/
+permalink: /routeTags/
 show_excerpts: true
 entries_layout: list
 ---

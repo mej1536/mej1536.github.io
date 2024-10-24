@@ -10,7 +10,7 @@
   url: /routeTags/
 - title: Search
   url: /routeSearch/
-# - title: Recipes
-#   url: /routeRecipes/
+- title: Recipes
+  url: /routeRecipes/
 # - title: External Page
 #   url: https://the-page.com/you-want-to-link-to.html
