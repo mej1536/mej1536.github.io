@@ -1,0 +1,22 @@
+current directory: D:/workspace/Github/mej1536.github.io/vendor/cache/ruby/3.3.0/gems/json-2.7.3/ext/json/ext/parser
+C:/Ruby33-x64/bin/ruby.exe extconf.rb
+checking for rb_enc_raise() in ruby.h... yes
+checking for rb_enc_interned_str() in ruby.h... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: D:/workspace/Github/mej1536.github.io/vendor/cache/ruby/3.3.0/gems/json-2.7.3/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20241024-23856-8l2e8i sitelibdir\=./.gem.20241024-23856-8l2e8i clean
+
+current directory: D:/workspace/Github/mej1536.github.io/vendor/cache/ruby/3.3.0/gems/json-2.7.3/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20241024-23856-8l2e8i sitelibdir\=./.gem.20241024-23856-8l2e8i
+generating parser-x64-mingw-ucrt.def
+compiling parser.c
+linking shared-object json/ext/parser.so
+
+current directory: D:/workspace/Github/mej1536.github.io/vendor/cache/ruby/3.3.0/gems/json-2.7.3/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20241024-23856-8l2e8i sitelibdir\=./.gem.20241024-23856-8l2e8i install
+/usr/bin/install -c -m 0755 parser.so ./.gem.20241024-23856-8l2e8i/json/ext
+
+current directory: D:/workspace/Github/mej1536.github.io/vendor/cache/ruby/3.3.0/gems/json-2.7.3/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20241024-23856-8l2e8i sitelibdir\=./.gem.20241024-23856-8l2e8i clean
