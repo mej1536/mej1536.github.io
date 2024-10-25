@@ -24,8 +24,9 @@
 .entry-title {
   margin-bottom: 0.5rem;
   font-family: $title-font-family;
-  font-weight: $entry-title-weight;
-  font-style: italic;
+  font-weight: 800;
+  // font-weight: $entry-title-weight;
+  // font-style: italic;
   letter-spacing: -1px;
   word-wrap: break-word; /* break long words that could overflow */
 
@@ -109,7 +110,7 @@
   .entry-excerpt {
     /* normalize font sizes */
     > * {
-      font-size: 1rem;
+      font-size: 1em;
     }
   }
 
@@ -118,7 +119,7 @@
     -ms-flex-order: 2;
     order: 2;
     margin-bottom: 1em;
-    font-size: 0.75rem;
+    font-size: 0.75em;
   }
 
   .more-link {
@@ -172,7 +173,7 @@
   .entry-excerpt {
     /* normalize font sizes */
     > * {
-      font-size: 1rem;
+      font-size: 1em;
     }
   }
 
@@ -181,7 +182,7 @@
     -ms-flex-order: 2;
     order: 2;
     margin-bottom: 1em;
-    font-size: 0.75rem;
+    font-size: 0.75em;
   }
 
   .more-link {

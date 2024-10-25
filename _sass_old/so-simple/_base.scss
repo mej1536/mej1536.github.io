@@ -104,3 +104,8 @@ a {
   -webkit-transition: $global-transition;
   transition: $global-transition;
 }
+
+
+html, body {
+  height: 100%;
+}

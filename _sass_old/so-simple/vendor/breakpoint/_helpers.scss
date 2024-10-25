@@ -3,7 +3,15 @@
 //////////////////////////////
 // Converts the input value to Base EMs
 //////////////////////////////
-@function breakpoint-to-base-em($value) {
+
+@function breakpoint-to-base-em( $value) {
+  //어디에서 $value 값을 min-width 로 꽂아주는가????
+  @if type-of($value) != 'number' {
+    @debug '------ ' + $value + ' ---------';
+    @return null;
+  }
+
+
   $value-unit: unit($value);
 
   // Will convert relative EMs into root EMs.
@@ -21,6 +29,7 @@
   @else {
     @return base-conversion($value);
   }
+
 }
 
 /*
@@ -28,16 +37,16 @@
   $unit: unit($value);
 
   @if $unit == 'px' {
-    @return $value / 16px * 1em;
+    @return math.div($value, 16px * 1em);
   }
   @else if $unit == '%' {
-    @return $value / 100% * 1em;
+    @return math.div($value , 100% * 1em);
   }
   @else if $unit == 'em' {
     @return $value;
   }
   @else if $unit == 'pt' {
-    @return $value / 12pt * 1em;
+    @return math.div($value , 12pt * 1em);
   }
   @else {
     @return $value;
