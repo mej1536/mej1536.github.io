@@ -85,9 +85,15 @@ plugins:
   - jekyll-paginate
   - jekyll-category-pages
 
+# Collections
+collections:
+  recipes:
+    output: true
+    permalink: /:collection/:path/
+
 # Front Matter Defaults
 defaults:
-  # Post defaults
+  # Posts defaults
   - scope:
       path: "_posts"
       type: posts
@@ -101,13 +107,6 @@ defaults:
       type: recipes
     values:
       layout: post
-      comments: true
-      share: true
-  - scope:
-      path: "_tests"
-      type: posts
-    values:
-      layout: collection
       comments: true
       share: true
 # Site Author
