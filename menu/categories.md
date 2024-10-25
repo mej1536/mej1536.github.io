@@ -1,7 +1,7 @@
 ---
 title: Category Archive
 layout: categories
-permalink: /routeCategories/
+permalink: /menu/categories/
 show_excerpts: true
 entries_layout: list
 ---
