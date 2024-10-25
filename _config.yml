@@ -16,7 +16,8 @@
 theme: jekyll-theme-so-simple
 # remote_theme: mmistakes/so-simple-theme
 skin: "/assets/css/skins/default.css"
-locale: ko-kr
+locale: "ko-KR"
+lang: "ko"
 title: "eeun-jeong"
 description: "블로그 설명 들어감"
 baseurl: "" # the subpath of your site, e.g. "/blog"
@@ -84,6 +85,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-category-pages
+
 
 # Collections
 collections:

@@ -10,8 +10,6 @@
   url: /routeTags/
 - title: Search
   url: /routeSearch/
-- title: Tests
-  url: /routeTests/
 - title: Recipes
   url: /routeRecipes/
 # - title: External Page

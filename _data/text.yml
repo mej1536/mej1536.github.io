@@ -37,6 +37,36 @@ en-AU:
   <<: *DEFAULT_EN
 
 
+# Korean (default)
+# -----------------
+ko: &DEFAULT_KO
+  skip_links: "건너띄기 링크"
+  skip_primary_nav: "주메뉴 영역으로 이동"
+  skip_content: "컨텐츠 영역으로 이동"
+  skip_footer: "푸터 영역으로 이동"
+  menu_label: "Menu"
+  by: "by"
+  min_read: "min read"
+  read_more: "내용 더보기"
+  categories: "Categories"
+  tags: "Tags"
+  pages_categorized: "Pages filed under"
+  pages_tagged: "Pages tagged"
+  table_of_contents: "Table of Contents"
+  results_found: "검색 결과"
+  share: "공유"
+  tweet: "Tweet"
+  next: "다음 글"
+  previous: "이전 글"
+  newer: "새 글"
+  older: "오래된 글"
+  back_to_top: "위로이동"
+  search_placeholder_text: "검색어를 입력하세요"
+  powered_by: "powered by "
+ko-KR:
+  <<: *DEFAULT_KO
+
+
 # German
 # -----------------
 de: &DEFAULT_DE
