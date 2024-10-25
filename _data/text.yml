@@ -53,7 +53,7 @@ ko: &DEFAULT_KO
   pages_categorized: "Pages filed under"
   pages_tagged: "Pages tagged"
   table_of_contents: "Table of Contents"
-  results_found: "검색 결과"
+  results_found: "개의 검색 결과"
   share: "공유"
   tweet: "Tweet"
   next: "다음 글"

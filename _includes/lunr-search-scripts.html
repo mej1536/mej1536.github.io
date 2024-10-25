@@ -90,7 +90,13 @@
             })
           });
         resultdiv.empty();
-        resultdiv.prepend('<p class="results__found">' + result.length + ' {{ site.data.text[site.locale].results_found | default: "Result(s) found" }}</p>');
+
+        if (result.length === 0) {
+          resultdiv.prepend('<div class=""results_no"><p>검색 결과가 없습니다</p></div>')
+        } else {
+          resultdiv.prepend('<p class="results__found">' + result.length + ' {{ site.data.text[site.locale].results_found | default: "Result(s) found" }}</p>');
+        }
+
         for (var item in result) {
           var ref = result[item].ref;
           var searchitem =
