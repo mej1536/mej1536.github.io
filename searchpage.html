@@ -1,18 +1,10 @@
 ---
-layout: page
+layout: search
+page_title: Search
+permalink: /search/
 ---
 
-{{ content }}
-
-<form onsubmit="return false;">
-  <input type="input" id="search" class="search-input"  placeholder="{{ site.data.text[site.locale].search_placeholder_text | default: 'Enter your search term...' }}" autofocus>
-</form>
-
-<div id="results"></div>
-
-
-<!--
- <div class="container">
+<div class="container">
   <div class="row">
    <div class="col-12">
      <div id="search-bar">
@@ -24,15 +16,11 @@ layout: page
   </div>
 </div>
 
+<!-- Script pointing to jekyll-search.js -->
 <script src="/assets/js/simple-jekyll-search.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 SimpleJekyllSearch({
-    sortMiddleware: function(a, b) {
-      var astr = String(a.section) + "-" + String(a.caption);
-      var bstr = String(b.section) + "-" + String(b.caption);
-      return astr.localeCompare(bstr)
-    },
      searchInput: document.getElementById('search-input'),
      resultsContainer: document.getElementById('results-container'),
      json: '/search.json',
@@ -43,4 +31,3 @@ SimpleJekyllSearch({
      exclude: ['Welcome']
 });
 </script>
- -->
