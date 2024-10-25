@@ -18,9 +18,9 @@ theme: jekyll-theme-so-simple
 skin: "/assets/css/skins/default.css"
 locale: ko-kr
 title: "eeun-jeong"
-description: "블로그 설명"
-baseurl: # the subpath of your site, e.g. "/blog"
-url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description: "블로그 설명 들어감"
+baseurl: "" # the subpath of your site, e.g. "/blog"
+url: "https://mej1536.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
 read_time: # reading time estimates, e.g. true
@@ -103,7 +103,13 @@ defaults:
       layout: post
       comments: true
       share: true
-
+  - scope:
+      path: "_tests"
+      type: posts
+    values:
+      layout: collection
+      comments: true
+      share: true
 # Site Author
 author:
   name: mej1536

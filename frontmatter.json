@@ -42,6 +42,26 @@
           "title": "Categories",
           "name": "categories",
           "type": "categories"
+        },
+        {
+          "title": "layout",
+          "name": "layout",
+          "type": "string"
+        },
+        {
+          "title": "permalink",
+          "name": "permalink",
+          "type": "string"
+        },
+        {
+          "title": "collection",
+          "name": "collection",
+          "type": "string"
+        },
+        {
+          "title": "entries_layout",
+          "name": "entries_layout",
+          "type": "string"
         }
       ]
     }
