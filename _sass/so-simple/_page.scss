@@ -11,15 +11,16 @@
 }
 
 .page-title {
-  @include fluid-type($min-vw, $max-vw, 48px, 60px);
-  margin-bottom: 0.5em;
+  @include fluid-type($min-vw, $max-vw, 36px, 50px);
+  margin-bottom: 1.4em;
   font-family: $sans-serif-title;
-  font-size: 40px;
+  font-weight: normal;
   // font-weight: $page-title-weight;
   // font-style: italic;
   letter-spacing: -2px;
 }
 
+/*
 .page-image {
   position: relative;
   text-align: center;
@@ -37,6 +38,16 @@
     // margin-top: (-2 * $site-logo-height) / 2;
     margin-top: math.div((-2 * $site-logo-height), 2)
   }
+
+  img {
+    width: 100%;
+  }
+} */
+
+.page-image {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 
   img {
     width: 100%;
@@ -271,6 +282,8 @@
       float: right; // display: grid fallback
       width: 78%; // display: grid fallback
       min-width: 0;
+      color: #666;
+      line-height: 160%;
     }
 
     @supports (display: grid) {

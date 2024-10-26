@@ -47,11 +47,16 @@ $h6-max: math.div($base-font-size, $modular-scale-2) !default;
 
 /* Font Families */
 $serif-font-family: "Gowun Batang", serif !default;
-$sans-serif-title: "Gowun Dodum", "Gothic A1",/*  "IBM Plex Sans KR", "Hahmlet",  */ sans-serif !default;
+$sans-serif-title: "Hahmlet", "IBM Plex Sans KR", sans-serif !default;
 $sans-serif-font-family: "Nanum Gothic", sans-serif !default;
 $monospace-font-family: Menlo, Consolas, Monaco, "Courier New", Courier, monospace !default;
 
-$base-font-family: $sans-serif-font-family !default;
+$default-font-family: "Pretendard", "Nanum Gothic", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !default;
+
+
+// $base-font-family: $sans-serif-font-family !default;
+$base-font-family: $default-font-family !default;
+
 $headline-font-family: $sans-serif-font-family !default;
 $title-font-family: $serif-font-family !default;
 $description-font-family: $serif-font-family !default;

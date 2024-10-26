@@ -37,7 +37,13 @@
   padding: 2em 0;
 
   > article { width: 100%; }
+
+  &.image-content {
+    border: 1px solid red;
+  }
 }
+
+
 
 .navigation-wrapper,
 .masthead,
@@ -62,5 +68,24 @@
 
   .results_no {
     text-align: center;
+  }
+}
+
+
+.layout--portfolio {
+  .masthead {
+    padding: 0;
+    background-color: rgba(#ddd, .6);
+  }
+  .main-content {
+    padding: 0;
+    border: 1px dashed #222;
+  }
+}
+
+
+.layout--post {
+  .masthead {
+    background-color: yellow;
   }
 }
