@@ -1,3 +1,66 @@
 
-@use './so-simple/mixins' as * ;
+//페이지 wrapper 추가
+.ui-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100dvh;
 
+  .site-footer {
+    border-top-color: rgba(#ddd, .6);
+  }
+}
+
+//메뉴바
+.navigation-wrapper {
+  position: relative;
+  border-top: solid 0.25em #000;
+
+  .site-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-bottom: 0;
+    width: 100%;;
+  }
+
+  @include breakpoint($medium) {
+    min-height: 4em;
+  }
+}
+
+//컨텐츠 영역
+.main-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 2em 0;
+
+  > article { width: 100%; }
+}
+
+.navigation-wrapper,
+.masthead,
+.site-footer {
+  flex: none;
+}
+
+.page-title:empty { display: none;}
+
+
+//검색 페이지
+.layout--search {
+  .search-input {
+    max-width: $medium;
+    height: 60px;
+    border-radius: 10px;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  .results_no {
+    text-align: center;
+  }
+}

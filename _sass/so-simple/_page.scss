@@ -214,9 +214,10 @@
 .layout--tag,
 .layout--collection,
 .layout--search {
-  .page-wrapper {
-    max-width: $main-max-width;
-  }
+  // .page-wrapper {
+  //   max-width: $main-max-width;
+  //   border: 1px dashed red;
+  // }
 
   .page-title {
     text-align: center;
@@ -286,6 +287,7 @@
 
 .page--wide {
   .page-wrapper {
-    max-width: $main-sidebar-max-width;
+    // max-width: $main-sidebar-max-width;
+    max-width: $xlarge;
   }
 }
