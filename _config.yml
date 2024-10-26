@@ -103,6 +103,14 @@ defaults:
       layout: post
       comments: true
       share: true
+  # Code defaults
+  - scope:
+      path: "_codes"
+      type: codes
+    values:
+      layout: post
+      comments: true
+      share: true
   # Recipe defaults
   - scope:
       path: "_recipes"

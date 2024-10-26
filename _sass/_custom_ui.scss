@@ -83,6 +83,10 @@
   }
 }
 
+.layout--home,
+.layout--posts {
+  .entry-image {display: none;}
+}
 
 .layout--post {
   .masthead {

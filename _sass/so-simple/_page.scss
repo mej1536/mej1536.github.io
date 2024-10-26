@@ -225,10 +225,10 @@
 .layout--tag,
 .layout--collection,
 .layout--search {
-  // .page-wrapper {
-  //   max-width: $main-max-width;
+  .page-wrapper {
+    max-width: $main-max-width;
   //   border: 1px dashed red;
-  // }
+  }
 
   .page-title {
     text-align: center;
