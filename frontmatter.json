@@ -47,6 +47,28 @@
           "title": "Categories",
           "name": "categories",
           "type": "categories"
+        },
+        {
+          "title": "image",
+          "name": "image",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "path",
+              "name": "path",
+              "type": "string"
+            },
+            {
+              "title": "thumbnail",
+              "name": "thumbnail",
+              "type": "string"
+            },
+            {
+              "title": "caption",
+              "name": "caption",
+              "type": "string"
+            }
+          ]
         }
       ]
     }
