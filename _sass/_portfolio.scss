@@ -1,0 +1,44 @@
+
+.layout--portfolio {
+  .masthead {
+    padding: 0;
+    background-color: rgba(#ddd, .6);
+  }
+
+  .main-content {
+    padding: 0;
+  }
+}
+
+
+.footer-custom {
+  padding-bottom: 30px;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+.content-boxs {
+  display: flex;
+  width: 100%;
+  gap: 100px;
+  flex-direction: column;
+
+  .box {
+    width: 100%;
+    height: 400px;
+    background-color: gray;
+    &:nth-child(2) {
+      height: 600px;
+      background-color: orange;
+    }
+    &:nth-child(3) {
+      height: 500px;
+      background-color: orangered;
+    }
+
+    &.active {
+      border: 2px dashed #000;
+    }
+  }
+}
