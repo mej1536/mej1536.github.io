@@ -1,4 +1,5 @@
 {
-	"[markdown]": {
-	}
+  "[markdown]": {},
+  "rubyInstaller.rubyInstallationPath": "C:\\Ruby33-x64",
+  "ruby.rubyPath": "C:\\Ruby33-x64\\bin\\ruby.exe"
 }
