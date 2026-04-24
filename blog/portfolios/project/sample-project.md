@@ -2,6 +2,7 @@
 title: "샘플 포트폴리오"
 date: "2026-04-24"
 description: "포트폴리오 항목 예시입니다."
+tags: ["nextjs", "scss"]
 ---
 
 ## 프로젝트 소개

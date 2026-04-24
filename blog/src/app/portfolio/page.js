@@ -8,9 +8,9 @@ export default function PortfolioPage() {
     <>
       <h1 className="portfolio__title">포트폴리오</h1>
       <ul className="portfolio__list">
-        {allPortfolios.map(({ id, title, date, description }) => (
-          <li key={id} className="portfolio__item">
-            <Link href={`/portfolio/${id}`} className="portfolio__link">
+        {allPortfolios.map(({ slug, title, date, description, category }) => (
+          <li key={slug.join('/')} className="portfolio__item">
+            <Link href={`/portfolio/${slug.join('/')}`} className="portfolio__link">
               {title}
             </Link>
             {description && (

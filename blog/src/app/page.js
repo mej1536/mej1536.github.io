@@ -10,11 +10,12 @@ export default function Home() {
       <section>
         <h2 className="home__section-title">글 목록</h2>
         <ul className="home__list">
-          {allPostsData.map(({ id, date, title }) => (
-            <li key={id} className="home__item">
-              <Link href={`/posts/${id}`} className="home__link">
+          {allPostsData.map(({ slug, date, title, category }) => (
+            <li key={slug.join('/')} className="home__item">
+              <Link href={`/posts/${slug.join('/')}`} className="home__link">
                 {title}
               </Link>
+              {category && <span className="home__category">{category}</span>}
               <small className="home__date">{date}</small>
             </li>
           ))}

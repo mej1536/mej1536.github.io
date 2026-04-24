@@ -1,22 +1,24 @@
-import { getPostData, getAllPostIds } from '../../../lib/posts';
 import Link from 'next/link';
+import { getPostData, getAllPostSlugs } from '../../../lib/posts';
 
-// 깃허브 배포(정적 내보내기)를 위해 필요한 동적 경로 생성 함수
+// 정적 경로 생성 (catch-all)
 export async function generateStaticParams() {
-  const paths = getAllPostIds();
-  return paths.map((path) => ({
-    id: path.params.id,
+  const allSlugs = getAllPostSlugs();
+  return allSlugs.map(({ slug }) => ({
+    slug,
   }));
 }
 
-export default async function Post({ params }) {
-  // 최신 Next.js 환경에서는 params가 비동기(Promise)일 수 있으므로 await를 사용합니다.
+export default async function PostDetail({ params }) {
   const resolvedParams = await params;
-  const postData = await getPostData(resolvedParams.id);
+  const postData = await getPostData(resolvedParams.slug);
 
   return (
     <article className="post">
       <header className="post__header">
+        {postData.category && (
+          <span className="post__category">{postData.category}</span>
+        )}
         <h1 className="post__title">{postData.title}</h1>
         <div className="post__date">{postData.date}</div>
       </header>

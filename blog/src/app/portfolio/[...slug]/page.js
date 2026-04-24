@@ -1,21 +1,24 @@
 import Link from 'next/link';
-import { getPortfolioData, getAllPortfolioIds } from '../../../lib/portfolios';
+import { getPortfolioData, getAllPortfolioSlugs } from '../../../lib/portfolios';
 
-// 정적 경로 생성
+// 정적 경로 생성 (catch-all)
 export async function generateStaticParams() {
-  const paths = getAllPortfolioIds();
-  return paths.map((path) => ({
-    id: path.params.id,
+  const allSlugs = getAllPortfolioSlugs();
+  return allSlugs.map(({ slug }) => ({
+    slug,
   }));
 }
 
 export default async function PortfolioDetail({ params }) {
   const resolvedParams = await params;
-  const data = await getPortfolioData(resolvedParams.id);
+  const data = await getPortfolioData(resolvedParams.slug);
 
   return (
     <article className="portfolio-detail">
       <header className="portfolio-detail__header">
+        {data.category && (
+          <span className="portfolio-detail__category">{data.category}</span>
+        )}
         <h1 className="portfolio-detail__title">{data.title}</h1>
         <div className="portfolio-detail__date">{data.date}</div>
       </header>
