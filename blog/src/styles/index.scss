@@ -1,0 +1,9 @@
+// 스타일 진입점
+// 모든 partial을 이곳에서 불러옵니다.
+
+@use 'reset';
+@use 'header';
+@use 'footer';
+@use 'home';
+@use 'post';
+@use 'portfolio';

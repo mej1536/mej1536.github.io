@@ -1,0 +1,29 @@
+// 헤더 (네비게이션)
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+
+  &__logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  &__link {
+    font-size: 0.95rem;
+
+    &--active {
+      font-weight: 700;
+    }
+  }
+}
