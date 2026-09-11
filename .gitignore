@@ -285,3 +285,5 @@ storybook-static
 
 # turborepo cache
 .turbo
+
+.claude/settings.local.json
