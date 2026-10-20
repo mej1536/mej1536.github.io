@@ -30,3 +30,10 @@ pnpm install
 pnpm audit    # 취약점 0건 확인
 pnpm build    # 빌드 정상 확인
 ```
+
+## 다시 설치하기
+```bash
+pnpm install --force    # 이미 설치된 패키지도 모두 다시 받아서 설치합니다.
+rm -rf node_modules && pnpm install   # node_modules 폴더를 지우고 처음부터 설치합니다.
+pnpm install --no-frozen-lockfile # lock 파일을 package.json에 맞춰 다시 계산합니다. lock 파일 내용이 틀렸을 때 씁니다.
+```
